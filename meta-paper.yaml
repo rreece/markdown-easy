@@ -59,6 +59,8 @@ citation-style: templates/chicago-author-date.csl
 #tblPrefix: "Table"
 
 ## html options -------------------------------------------
+template_html: 'templates/book_chapter.html'  # TODO
+backmatter_md: 'templates/refs_subsection.md'
 css: 
     -   'templates/markdown-memo.css'
 #    -   'https://use.fontawesome.com/releases/v5.2.0/css/all.css'
@@ -72,7 +74,8 @@ navigation: true
 #thumbnail: 'http://rreece.github.io/sw/markdown-memo/img/ATLAS-local-p0-vs-mH.png'
 
 ## pdflatex options ---------------------------------------
-template: 'templates/paper.tex'
+template_tex: 'templates/paper.tex'
+backmatter_tex: 'templates/refs_section.tex'
 documentclass: 'article'
 classoption:
     -   'letterpaper'

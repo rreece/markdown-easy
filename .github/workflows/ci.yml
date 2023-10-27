@@ -35,17 +35,18 @@ jobs:
 
     - name: Look
       run: ls
-      
+
     - name: Run make html
       run: make html
-      
+
     - name: Run make html check
-      run: cat pandoc.log
+      run: cat pandoc-html.log
       
     - name: Run make pdf
       run: make pdf
 
     - name: Run make pdf check
-      run: cat latex.log
-
+      run: |
+        cat latex.log
+        cat pandoc-tex.log
 

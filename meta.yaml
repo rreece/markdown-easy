@@ -71,7 +71,7 @@ navigation: true
 #thumbnail: 'http://rreece.github.io/sw/markdown-memo/img/ATLAS-local-p0-vs-mH.png'
 
 ## pdflatex options ---------------------------------------
-template: 'templates/book.tex'
+template: templates/book.tex
 documentclass: 'memoir'
 chapterstyle: 'default'
 classoption:

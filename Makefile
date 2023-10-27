@@ -60,7 +60,7 @@ pdf: $(OUTPUT).pdf
 		--mathjax \
 		--filter pandoc-crossref \
 		$(BIB_OPTIONS) \
-		-o $@ $< $(BACKMATTER_HTML) meta.yaml > pandoc.log 2>&1
+		-o $@ $< $(BACKMATTER_HTML) meta.yaml > pandoc-html.log 2>&1
 	$(PRINT) "make $@ done."
 
 ## create tex with references replaced and bibliography created
@@ -74,7 +74,7 @@ $(OUTPUT).tex: $(MDP_FILES) bibs/mybib.bib meta.yaml
 		--template=$(TEMPLATE) \
 		--filter pandoc-crossref \
 		$(BIB_OPTIONS) \
-		-o $@ $(MD_FILES) $(BACKMATTER_TEX) meta.yaml
+		-o $@ $(MD_FILES) $(BACKMATTER_TEX) meta.yaml > pandoc-tex.log 2>&1
 	$(PRINT) "template1 = $(TEMPLATE1)"
 	$(PRINT) "template = $(TEMPLATE)"
 	$(PRINT) "make $@ done."

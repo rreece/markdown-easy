@@ -40,6 +40,7 @@ default: html
 all: html pdf
 html: $(HTML_FILES)
 pdf: $(OUTPUT).pdf
+install: install_for_linux
 
 
 ##-----------------------------------------------------------------------------
@@ -75,8 +76,8 @@ $(OUTPUT).tex: $(MDP_FILES) bibs/mybib.bib meta.yaml
 		--filter pandoc-crossref \
 		$(BIB_OPTIONS) \
 		-o $@ $(MD_FILES) $(BACKMATTER_TEX) meta.yaml > pandoc-tex.log 2>&1
-	$(PRINT) "template1  $(TEMPLATE1)"
-	$(PRINT) "template  $(TEMPLATE)"
+	$(PRINT) "template1:$(TEMPLATE1)"
+	$(PRINT) "template:$(TEMPLATE)"
 	$(PRINT) "make $@ done."
 
 ## create the pdf from tex
@@ -122,9 +123,6 @@ over: realclean default
 ## install
 ## See: https://askubuntu.com/questions/1335772/using-pandoc-crossref-on-ubuntu-20-04
 ##-----------------------------------------------------------------------------
-
-install: install_for_linux
-	$(PRINT) "make $@ done."
 
 install_for_linux:
 	@echo "Installing for linux..." ; \

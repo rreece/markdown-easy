@@ -58,6 +58,7 @@ draft: true  # used with fancyhdr
 #tblPrefix: "Table"
 
 ## html options -------------------------------------------
+template_html: 'templates/book_chapter.html'
 css: 
     -   'templates/markdown-memo.css'
 #    -   'https://use.fontawesome.com/releases/v5.2.0/css/all.css'
@@ -71,7 +72,7 @@ navigation: true
 #thumbnail: 'http://rreece.github.io/sw/markdown-memo/img/ATLAS-local-p0-vs-mH.png'
 
 ## pdflatex options ---------------------------------------
-template: 'templates/book.tex'
+template_tex: 'templates/book.tex'
 documentclass: 'memoir'
 chapterstyle: 'default'
 classoption:

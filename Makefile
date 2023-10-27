@@ -6,7 +6,7 @@
 SHELL := /bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 
-export TEXINPUTS := .//:./templates//:./tex//:${TEXINPUTS}
+#export TEXINPUTS := .//:./templates//:./tex//:${TEXINPUTS}
 
 
 ##-----------------------------------------------------------------------------
@@ -163,7 +163,7 @@ install_for_mac:
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ; \
 	brew doctor ; \
 	brew update ; \
-	brew install git ; \
+	brew cleanup ; \
 	echo "Installing texlive..." ; \
 	brew install texlive ; \
 	echo `which pdflatex` ; \

@@ -131,15 +131,15 @@ install_for_linux:
     sudo apt-get -y update ; \
 	if [ ! -f /usr/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
-    	sudo apt-get -y install texlive ; \
+    	sudo apt-get -y install texlive-latex-extra ; \
 	fi ; \
-	echo `which pdflatex` ; \
+	echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/bin/pandoc ]; then \
 		echo "Installing pandoc..." ; \
 		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-1-amd64.deb ; \
 		sudo dpkg -i pandoc-2.13-1-amd64.deb ; \
 	fi ; \
-	echo `which pandoc` ; \
+	echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
 		echo "Installing pandoc-crossref..." ; \
@@ -150,7 +150,7 @@ install_for_linux:
     	sudo mkdir -p /usr/local/man/man1 ; \
     	sudo mv pandoc-crossref.1  /usr/local/man/man1 ; \
 	fi ; \
-	echo `which pandoc-crossref` ; \
+	echo "which pandoc-crossref: `which pandoc-crossref`" ; \
 	echo "Installing other dependencies..." ; \
 	pip install --upgrade pip ; \
 	pip install -r requirements.txt ;
@@ -166,14 +166,15 @@ install_for_mac:
 	brew doctor ; \
 	brew update ; \
 	brew cleanup ; \
-	echo "Installing basictex..." ; \
-	brew install --cask basictex ; \
-	echo `which pdflatex` ; \
+	echo "Installing texlive..." ; \
+	brew install texlive ; \
+	echo "which pdflatex: `which pdflatex`" ; \
 	echo "Installing sublime..." ; \
 	brew cask install sublime-text ; \
 	echo "Installing pandoc..." ; \
 	wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-macOS.pkg ; \
 	sudo installer -pkg pandoc-2.13-macOS.pkg -target / ; \
+	echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
 		echo "Installing pandoc-crossref..." ; \
@@ -182,7 +183,7 @@ install_for_mac:
     	sudo mv pandoc-crossref /usr/local/bin/ ; \
     	sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
 	fi ; \
-	echo `which pandoc-crossref` ; \
+	echo "which pandoc-crossref: `which pandoc-crossref`" ; \
 	echo "Installing other dependencies..." ; \
 	pip install --upgrade pip ; \
 	pip install -r requirements.txt ;

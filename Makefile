@@ -160,14 +160,16 @@ install_for_mac:
 	brew doctor ; \
 	brew update ; \
 	brew cleanup ; \
-	echo "Installing texlive..." ; \
-	brew install texlive ; \
+	if [ ! -f /usr/local/bin/pdflatex ]; then \
+		echo "Installing texlive..." ; \
+		brew install texlive ; \
+	fi ; \
 	echo "which pdflatex: `which pdflatex`" ; \
-	echo "Installing sublime..." ; \
-	brew cask install sublime-text ; \
-	echo "Installing pandoc..." ; \
-	wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-macOS.pkg ; \
-	sudo installer -pkg pandoc-2.13-macOS.pkg -target / ; \
+	if [ ! -f /usr/local/bin/pandoc ]; then \
+		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-macOS.pkg ; \
+		echo "Installing pandoc..." ; \
+		sudo installer -pkg pandoc-2.13-macOS.pkg -target / ; \
+	fi ; \
 	echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \

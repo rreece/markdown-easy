@@ -71,7 +71,7 @@ $(OUTPUT).tex: $(MDP_FILES) bibs/mybib.bib meta.yaml
 		--ascii \
 		--standalone \
 		--variable=date_now:"$(DATE_NOW)" \
-		--template=$(TEMPLATE1) \
+		--template=$(TEMPLATE) \
 		--filter pandoc-crossref \
 		$(BIB_OPTIONS) \
 		-o $@ $(MD_FILES) $(BACKMATTER_TEX) meta.yaml > pandoc-tex.log 2>&1

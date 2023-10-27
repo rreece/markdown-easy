@@ -130,8 +130,8 @@ install_for_linux:
 	@echo "Installing for linux..." ; \
     sudo apt-get -y update ; \
 	if [ ! -f /usr/bin/pdflatex ]; then \
-		echo "Installing texlive-latex-extra..." ; \
-    	sudo apt-get -y install texlive-latex-extra ; \
+		echo "Installing texlive..." ; \
+    	sudo apt-get -y install texlive ; \
 	fi ; \
 	echo `which pdflatex` ; \
 	if [ ! -f /usr/bin/pandoc ]; then \
@@ -152,6 +152,7 @@ install_for_linux:
 	fi ; \
 	echo `which pandoc-crossref` ; \
 	echo "Installing other dependencies..." ; \
+	pip install --upgrade pip ; \
 	pip install -r requirements.txt ;
 	$(PRINT) "make $@ done."
 
@@ -165,8 +166,8 @@ install_for_mac:
 	brew doctor ; \
 	brew update ; \
 	brew cleanup ; \
-	echo "Installing texlive..." ; \
-	brew install texlive ; \
+	echo "Installing basictex..." ; \
+	brew install --cask basictex ; \
 	echo `which pdflatex` ; \
 	echo "Installing sublime..." ; \
 	brew cask install sublime-text ; \
@@ -183,6 +184,7 @@ install_for_mac:
 	fi ; \
 	echo `which pandoc-crossref` ; \
 	echo "Installing other dependencies..." ; \
+	pip install --upgrade pip ; \
 	pip install -r requirements.txt ;
 	$(PRINT) "make $@ done."
 

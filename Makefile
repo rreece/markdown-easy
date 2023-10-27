@@ -13,11 +13,11 @@ SHELL := /bin/bash
 
 DATE_NOW := $(shell date +"%B %-d, %Y")
 DOC_TITLE := $(shell grep '^title:' meta.yaml | head -n1 | sed -e 's/title:[[:space:]]*//' | tr -d "'" | tr -d '"')
-OUTPUT := $(shell grep '^output:' meta.yaml | head -n1 | awk '{ print $$2}')
 TEMPLATE_HTML := $(shell grep '^template_html:' meta.yaml | head -n1 | sed -e 's/template_html:[[:space:]]*//' | tr -d "'" | tr -d '"')
 TEMPLATE_TEX := $(shell grep '^template_tex:' meta.yaml | head -n1 | sed -e 's/template_tex:[[:space:]]*//' | tr -d "'" | tr -d '"')
-BACKMATTER_HTML := $(shell grep '^backmatter_md:' meta.yaml | head -n1 | sed -e 's/backmatter_md:[[:space:]]*//' | tr -d "'" | tr -d '"')
+BACKMATTER_MD := $(shell grep '^backmatter_md:' meta.yaml | head -n1 | sed -e 's/backmatter_md:[[:space:]]*//' | tr -d "'" | tr -d '"')
 BACKMATTER_TEX := $(shell grep '^backmatter_tex:' meta.yaml | head -n1 | sed -e 's/backmatter_tex:[[:space:]]*//' | tr -d "'" | tr -d '"')
+OUTPUT := $(shell grep '^output:' meta.yaml | head -n1 | sed -e 's/output:[[:space:]]*//' | tr -d "'" | tr -d '"')
 
 MD_FILES := $(filter-out README.md LICENSE.md VERSIONS.md, $(sort $(wildcard *.md)))
 HTML_FILES := $(MD_FILES:%.md=%.html)
@@ -59,7 +59,7 @@ install: install_for_linux
 		--mathjax \
 		--filter pandoc-crossref \
 		$(BIB_OPTIONS) \
-		-o $@ $< $(BACKMATTER_HTML) meta.yaml > pandoc-html.log 2>&1
+		-o $@ $< $(BACKMATTER_MD) meta.yaml > pandoc-html.log 2>&1
 	$(PRINT) "make $@ done."
 
 ## create tex with references replaced and bibliography created

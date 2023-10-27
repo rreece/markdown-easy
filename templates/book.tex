@@ -1,0 +1,403 @@
+% intended to be used with documentclass: memoir
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+
+%% extra packages
+$for(extrapackages)$
+\usepackage{$extrapackages$}
+$endfor$
+
+%% fonts
+$if(fontfamily)$
+\usepackage[sc]{$fontfamily$}
+$utelse$
+\usepackage{lmodern}
+$endif$
+
+%% linestretch
+\usepackage{setspace}
+$if(linestretch)$
+\setstretch{$linestretch$}
+$endif$
+
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+%\usepackage{fixltx2e} % provides \textsubscript
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  $if(euro)$
+    \usepackage{eurosym}
+  $endif$
+
+  %% make quote blocks sans-serif
+  \let\quoteOld\quote
+  \let\endquoteOld\endquote
+  \renewenvironment{quote}
+  {\quoteOld\sffamily\small}
+  {\endquoteOld}
+
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+  $if(mainfont)$
+      \setmainfont{$mainfont$}
+  $endif$
+  $if(sansfont)$
+      \setsansfont{$sansfont$}
+  $endif$
+  $if(monofont)$
+      \setmonofont[Mapping=tex-ansi]{$monofont$}
+  $endif$
+  $if(mathfont)$
+      \setmathfont(Digits,Latin,Greek){$mathfont$}
+  $endif$
+\fi
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+
+$if(geometry)$
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
+
+$if(natbib)$
+\usepackage{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+%\setcitestyle{aysep={}}
+%\renewcommand{\bibfont}{\footnotesize}
+%\setlength{\bibsep}{2pt}
+$endif$
+
+$if(biblatex)$
+  \usepackage[useprefix=true]{biblatex}
+  $if(biblio-files)$
+  \bibliography{$biblio-files$}
+  $endif$
+$endif$
+
+$if(listings)$
+\usepackage{listings}
+$endif$
+
+$if(lhs)$
+\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+%% make verbatime environments footnotesize by default
+%% you can overwrite it: \begin{verbatim}[fontsize=\normalsize]
+\usepackage{fancyvrb}
+\fvset{fontsize=\footnotesize}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{}
+
+$if(tables)$
+\usepackage{longtable,booktabs}
+%\usepackage{supertabular}
+$endif$
+
+$if(graphics)$
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+$endif$
+
+$if(hyperref)$
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={$authorshort$},
+            pdftitle={$title$},
+            colorlinks=true,
+            linktocpage=true,
+            citecolor=$if(citecolor)$$citecolor$$else$cyan$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$cyan$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+            filecolor=$if(filecolor)$$filecolor$$else$black$endif$,
+            pdfborder={0 0 0}}
+%\urlstyle{same}  % don't use monospace font for urls
+%\urlstyle{sf}    % use sans-serif for urls
+%\renewcommand{\UrlFont}{\small}
+\renewcommand{\UrlFont}{\footnotesize\sffamily}
+%\renewcommand{\UrlFont}{\footnotesize\itshape}
+$endif$
+
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+
+$if(strikeout)$
+\usepackage[normalem]{ulem}
+% avoid problems with \sout in headers with hyperref:
+$if(hyperref)$
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+$endif$
+
+$if(numbersections)$
+\setcounter{secnumdepth}{3}
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
+
+$if(verbatim-in-note)$
+\VerbatimFootnotes % allows verbatim text in footnotes
+$endif$
+
+%% add spacing after footnote
+\let\oldfootnote\footnote
+\renewcommand\footnote[1]{\oldfootnote{\hspace{1mm}#1}}
+
+$if(lang)$
+\ifxetex
+  \usepackage{polyglossia}
+  \setmainlanguage{$mainlang$}
+\else
+  \usepackage[$lang$]{babel}
+\fi
+$endif$
+
+\usepackage{xcolor}
+
+$if(secnewpage)$
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
+$endif$
+
+
+%% fancyhdr
+$if(fancyhdr)$
+\usepackage{fancyhdr}
+
+$if(license)$
+%% overwrite the plain pagestyle which is used by maketitle for the titlepage
+\fancypagestyle{plain}{
+    \fancyhf{} % clear all header and footer fields
+    $if(draft)$
+    \fancyhead[LO]{\color{gray} \footnotesize DRAFT: \today{}. Please do not cite without permission.}
+    $endif$
+    $if(docid)$
+    \fancyhead[RO]{\footnotesize $docid$}
+    $endif$
+    $if(license)$
+    $if(submitted)$
+    \fancyfoot[LO]{ {\footnotesize $license$ \\* $submitted$} }
+    $else$
+    \fancyfoot[LO]{ {\footnotesize $license$} }
+    $endif$
+    $endif$
+    \renewcommand\headrulewidth{0pt}
+}
+$endif$
+
+\fancypagestyle{mainstyle}{
+    \fancyhf{} % clear all header and footer fields
+    \fancyhead[RO]{\textit{$authorshort$}}
+    \fancyhead[LE]{\textit{$if(titleshort)$$titleshort$$else$$title$$endif$}}
+    \fancyfoot[CO,CE]{\thepage}
+    $if(draft)$
+    \fancyhead[LO]{\color{gray} \footnotesize DRAFT: \today}
+    \fancyhead[RE]{\color{gray} \footnotesize DRAFT: \today}
+    $endif$
+}
+
+% endif fancyhdr
+$endif$
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt} % only for abstract, reset later
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+%% remove "Abstract" from the abstract
+\usepackage{abstract}
+\renewcommand{\abstractname}{}    % clear the title
+\renewcommand{\absnamepos}{empty} % originally center
+
+%% toc settings
+%$if(toc)$
+%%\hypersetup{linkcolor=black}
+%$if(tocdepth)$\setcounter{tocdepth}{$tocdepth$}$endif$
+%\usepackage{tocloft}
+%\setlength\cftbeforetoctitleskip{14pt}    % space before TOC title
+%\setlength\cftaftertoctitleskip{8pt}      % space after  TOC title
+%\setlength\cftbeforesecskip{4pt}          % space before sections
+%\renewcommand\cftsecafterpnum{\vskip0pt}  % space after  sections
+%%\setlength\cftparskip{2pt}               % space between paragraphs (subsections); default 0
+%\setlength\cftbeforepartskip{8pt}         % space before parts
+%\renewcommand\cftpartafterpnum{\vskip0pt} % space after  parts
+%$endif$
+
+%% caption settings:
+\usepackage{caption}
+%\captionsetup{belowskip=-8pt,aboveskip=-8pt,labelfont=bf,format=hang}
+\captionsetup{font=small,labelfont=bf,format=hang}
+
+%% tightlist hack
+\providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+%% chapterstyle
+$if(chapterstyle)$
+\chapterstyle{$chapterstyle$}
+$endif$
+
+\pretitle{\begin{center}\Huge\textbf }
+\posttitle{\par\end{center}\vskip 0.5em}
+
+
+%%=============================================================================
+\begin{document}
+%%=============================================================================
+
+%% set document metadata
+%% ----------------------------------------------------------------------------
+%% title ----------------------------------------
+$if(title)$\title{$title$$if(subtitle)$:\\\vspace{0.5em}{\large $subtitle$}$endif$}$endif$
+
+%% authors --------------------------------------
+$if(author)$\author{$for(author)$$author$$sep$ \and $endfor$}$endif$
+
+%% date -----------------------------------------
+$if(date)$
+\date{$date$}
+$else$
+\date{$date_now$}
+$endif$
+
+%% maketitle ------------------------------------
+$if(maketitle)$
+
+%\thispagestyle{empty}
+%
+%\noindent\rule{\textwidth}{2pt}
+%
+%{\let\newpage\relax\maketitle}
+%
+%\noindent\rule{\textwidth}{2pt}
+
+\maketitle
+
+\vspace{0.6cm}
+$endif$
+
+%% abstract -------------------------------------
+$if(abstract)$
+\begin{abstract}
+\noindent $abstract$
+$if(keywords)$
+
+\emph{Keywords:} $keywords$
+$endif$
+\end{abstract}
+$endif$
+
+
+%% ----------------------------------------------
+$for(include-before)$
+$include-before$
+$endfor$
+
+$if(toc)$
+\cleardoublepage
+\tableofcontents
+%\clearpage
+\cleardoublepage
+$endif$
+
+$if(fancyhdr)$
+\pagestyle{mainstyle}
+$endif$
+
+$if(lot)$
+\listoftables
+\clearpage
+$endif$
+
+$if(lof)$
+\listoffigures
+\clearpage
+$endif$
+
+%%-----------------------------------------------------------------------------
+$if(parskip)$
+\setlength{\parskip}{$parskip$}
+$else$
+\setlength{\parskip}{11pt}
+$endif$
+
+$if(spacing)$
+\begin{spacing}{$spacing$}
+$endif$
+
+$body$
+
+$if(spacing)$
+\end{spacing}
+$endif$
+%%-----------------------------------------------------------------------------
+
+$if(natbib)$
+$if(biblio-files)$
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+\bibliography{$biblio-files$}
+$endif$
+$endif$
+
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document}
+

@@ -18,7 +18,8 @@ DOC_TITLE := $(shell grep '^title:' meta.yaml | head -n1 | sed -e 's/title:\s*//
 OUTPUT := $(shell grep '^output:' meta.yaml | head -n1 | awk '{ print $$2}')
 MD_FILES := $(filter-out README.md LICENSE.md VERSIONS.md, $(sort $(wildcard *.md)))
 HTML_FILES := $(MD_FILES:%.md=%.html)
-TEMPLATE := $(shell grep '^template:' meta.yaml | head -n1 | sed -e 's/template:\s*//' -e 's/^"//' -e 's/"$$//')
+TEMPLATE1 := $(shell grep '^template:' meta.yaml | head -n1 | sed -e 's/template:\s*//' -e 's/^"//' -e 's/"$$//')
+TEMPLATE := templates/book.tex
 BACKMATTER_HTML := templates/refs_subsection.md
 #BACKMATTER_TEX := templates/refs_section.tex
 BACKMATTER_TEX := templates/refs_chapter.tex
@@ -38,9 +39,7 @@ PRINT = @echo '==>  '
 default: html
 all: html pdf
 html: $(HTML_FILES)
-#pdf: $(OUTPUT).pdf
-pdf: $(OUTPUT).tex
-	pdflatex -interaction=nonstopmode $(OUTPUT).tex
+pdf: $(OUTPUT).pdf
 
 
 ##-----------------------------------------------------------------------------
@@ -76,6 +75,7 @@ $(OUTPUT).tex: $(MDP_FILES) bibs/mybib.bib meta.yaml
 		--filter pandoc-crossref \
 		$(BIB_OPTIONS) \
 		-o $@ $(MD_FILES) $(BACKMATTER_TEX) meta.yaml
+	$(PRINT) "template $(TEMPLATE)"
 	$(PRINT) "make $@ done."
 
 ## create the pdf from tex

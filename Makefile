@@ -14,11 +14,11 @@ SHELL := /bin/bash
 ##-----------------------------------------------------------------------------
 
 DATE_NOW := $(shell date +"%B %-d, %Y")
-DOC_TITLE := $(shell grep '^title:' meta.yaml | head -n1 | sed -e 's/title:\s*//' -e 's/^"//' -e 's/"$$//')
+DOC_TITLE := $(shell grep '^title:' meta.yaml | head -n1 | sed -e 's/title:\s*//' | tr -d "'" | tr -d '"')
 OUTPUT := $(shell grep '^output:' meta.yaml | head -n1 | awk '{ print $$2}')
 MD_FILES := $(filter-out README.md LICENSE.md VERSIONS.md, $(sort $(wildcard *.md)))
 HTML_FILES := $(MD_FILES:%.md=%.html)
-TEMPLATE1 := $(shell grep '^template:' meta.yaml | head -n1 | sed -e 's/template:\s*//' -e 's/^"//' -e 's/"$$//')
+TEMPLATE1 := $(shell grep '^template:' meta.yaml | head -n1 | sed -e 's/template:\s*//' | tr -d "'" | tr -d '"')
 TEMPLATE := templates/book.tex
 BACKMATTER_HTML := templates/refs_subsection.md
 #BACKMATTER_TEX := templates/refs_section.tex

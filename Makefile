@@ -71,11 +71,12 @@ $(OUTPUT).tex: $(MDP_FILES) bibs/mybib.bib meta.yaml
 		--ascii \
 		--standalone \
 		--variable=date_now:"$(DATE_NOW)" \
-		--template=$(TEMPLATE) \
+		--template=$(TEMPLATE1) \
 		--filter pandoc-crossref \
 		$(BIB_OPTIONS) \
 		-o $@ $(MD_FILES) $(BACKMATTER_TEX) meta.yaml
-	$(PRINT) "template $(TEMPLATE)"
+	$(PRINT) "template1 = $(TEMPLATE1)"
+	$(PRINT) "template = $(TEMPLATE)"
 	$(PRINT) "make $@ done."
 
 ## create the pdf from tex

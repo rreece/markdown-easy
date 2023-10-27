@@ -22,7 +22,7 @@ See also
 ----------------------------------
 
 -   [rreece.github.io/sw/markdown-memo](http://rreece.github.io/sw/markdown-memo)
--   [kprussing.github.io/writing-with-markdown](http://kprussing.github.io/writing-with-markdown/)
+-   [kprussing.github.io/writing-with-markdown](https://web.archive.org/web/20171026174128/http://kprussing.github.io/writing-with-markdown/)
 -   [pandoc.org/README.html](http://pandoc.org/README.html)
 -   [commonmark.org](http://commonmark.org/)
 -   [scholarlymarkdown.com](http://scholarlymarkdown.com/)

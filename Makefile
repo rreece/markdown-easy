@@ -169,7 +169,7 @@ install_for_mac:
 	brew cask install sublime-text ; \
 	echo "Installing pandoc..." ; \
 	wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-macOS.pkg ; \
-	sudo installer -pkg pandoc-2.13-macOS.pkg ; \
+	sudo installer -pkg pandoc-2.13-macOS.pkg -target / ; \
 	pandoc --version ; \
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
 		echo "Installing pandoc-crossref..." ; \
@@ -177,8 +177,6 @@ install_for_mac:
     	tar -xf pandoc-crossref-macOS.tar.xz ; \
     	sudo mv pandoc-crossref /usr/local/bin/ ; \
     	sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
-    	sudo mkdir -p /usr/local/man/man1 ; \
-    	sudo mv pandoc-crossref.1  /usr/local/man/man1 ; \
 	fi ; \
 	echo `which pandoc-crossref` ; \
 	echo "Installing other dependencies..." ; \

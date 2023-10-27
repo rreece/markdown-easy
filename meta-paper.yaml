@@ -59,7 +59,7 @@ citation-style: templates/chicago-author-date.csl
 #tblPrefix: "Table"
 
 ## html options -------------------------------------------
-template_html: 'templates/book_chapter.html'  # TODO
+template_html: 'templates/book_chapter.html'
 backmatter_md: 'templates/refs_subsection.md'
 css: 
     -   'templates/markdown-memo.css'

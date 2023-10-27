@@ -44,11 +44,10 @@ keywords: academic writing, blogging, digital humanities, LaTeX, Markdown, open 
 citation-style: templates/chicago-author-date.csl
 #date: "January 1, 2017"
 #docid: EXAMPLE-DOC-000
-#draft: false  # used with fancyhdr
+draft: true  # used with fancyhdr
 #license: '&copy; 2015-2023 [Ryan Reece](http://rreece.github.io/). All rights reserved.'
 #license: '<span class="copy-left">&copy;</span> 2015-2023 [Ryan Reece](http://rreece.github.io/). Licensed for sharing under [CC-BY-4.0](http://creativecommons.org/licenses/by/4.0/).'
-#dorefs: true
-#submitted: ''
+#dorefs: true # TODO: needed?
 #submitted: 'Submitted to My Favorite Journal'
 #submitted: 'Journal reference: *Phys. Rev. D 92*, 072001 (2015)'
 #figureTitle: "Figure"
@@ -59,7 +58,7 @@ citation-style: templates/chicago-author-date.csl
 #tblPrefix: "Table"
 
 ## html options -------------------------------------------
-template_html: 'templates/book_chapter.html'  # TODO
+template_html: 'templates/book_chapter.html'
 backmatter_md: 'templates/refs_subsection.md'
 css: 
     -   'templates/markdown-memo.css'
@@ -74,14 +73,15 @@ navigation: true
 #thumbnail: 'http://rreece.github.io/sw/markdown-memo/img/ATLAS-local-p0-vs-mH.png'
 
 ## pdflatex options ---------------------------------------
-template_tex: 'templates/paper.tex'
-backmatter_tex: 'templates/refs_section.tex'
-documentclass: 'article'
+template_tex: 'templates/book.tex'
+backmatter_tex: 'templates/refs_chapter.tex'
+documentclass: 'memoir'
+chapterstyle: 'default'
 classoption:
     -   'letterpaper'
-    -   'openany'
+    -   'openright'
     -   'twoside'
-fancyhdr: true
+fancyhdr: false
 fontsize: '11pt'
 fontfamily: 'mathpazo'
 geometry: 
@@ -103,5 +103,5 @@ parskip: '11pt'
 secnewpage: false
 #spacing: '1.2'
 toc: true
-tocdepth: 3
+#tocdepth: 3
 ...

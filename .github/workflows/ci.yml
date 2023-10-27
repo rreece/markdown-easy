@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build_ubuntu:
 
     runs-on: ubuntu-latest
 
@@ -22,3 +22,20 @@ jobs:
       
     - name: Run make pdf
       run: make pdf
+
+  build_mac:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Run make install
+      run: make install_for_mac
+
+    - name: Run make html
+      run: make html
+      
+    - name: Run make pdf
+      run: make pdf
+

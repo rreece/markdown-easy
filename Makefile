@@ -154,6 +154,34 @@ install_for_linux:
 
 install_for_mac:
 	@echo "Installing for mac..." ; \
-	true ;
+	echo "Installing xcode..." ; \
+	xcode-select --install ; \
+	sudo xcodebuild -license accept ; \
+	echo "Installing brew..." ; \
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ; \
+	brew doctor ; \
+	brew update ; \
+	brew install git ; \
+	echo "Installing texlive..." ; \
+	brew install texlive ; \
+	echo `which pdflatex` ; \
+	echo "Installing sublime..." ; \
+	brew cask install sublime-text ; \
+	echo "Installing pandoc..." ; \
+	wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-macOS.pkg ; \
+	sudo installer -pkg pandoc-2.13-macOS.pkg ; \
+	pandoc --version ; \
+	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
+		echo "Installing pandoc-crossref..." ; \
+		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.10.0a/pandoc-crossref-macOS.tar.xz ; \
+    	tar -xf pandoc-crossref-macOS.tar.xz ; \
+    	sudo mv pandoc-crossref /usr/local/bin/ ; \
+    	sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
+    	sudo mkdir -p /usr/local/man/man1 ; \
+    	sudo mv pandoc-crossref.1  /usr/local/man/man1 ; \
+	fi ; \
+	echo `which pandoc-crossref` ; \
+	echo "Installing other dependencies..." ; \
+	pip install -r requirements.txt ;
 	$(PRINT) "make $@ done."
 

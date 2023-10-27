@@ -44,7 +44,7 @@ keywords: academic writing, blogging, digital humanities, LaTeX, Markdown, open 
 citation-style: templates/chicago-author-date.csl
 #date: "January 1, 2017"
 #docid: EXAMPLE-DOC-000
-#draft: false  # used with fancyhdr
+draft: true  # used with fancyhdr
 #license: '&copy; 2015-2023 [Ryan Reece](http://rreece.github.io/). All rights reserved.'
 #license: '<span class="copy-left">&copy;</span> 2015-2023 [Ryan Reece](http://rreece.github.io/). Licensed for sharing under [CC-BY-4.0](http://creativecommons.org/licenses/by/4.0/).'
 #dorefs: true # TODO: needed?

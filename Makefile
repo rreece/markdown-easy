@@ -38,7 +38,9 @@ PRINT = @echo '==>  '
 default: html
 all: html pdf
 html: $(HTML_FILES)
-pdf: $(OUTPUT).pdf
+#pdf: $(OUTPUT).pdf
+pdf: $(OUTPUT).tex
+	pdflatex -interaction=nonstopmode $(OUTPUT).tex
 
 
 ##-----------------------------------------------------------------------------

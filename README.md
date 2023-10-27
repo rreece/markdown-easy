@@ -5,7 +5,8 @@ markdown-easy
 
 Easy way to compile markdown into documents.
 
-*NOTE: I have a new motivation to clean up this project.
+*NOTE: This is work in progress.
+I have a new motivation to clean up this project.
 Please let me know if you find it useful.*
 
 This project is meant to make writing easier and more productive.
@@ -32,7 +33,8 @@ Examples/blogs:
 
 -   [programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown)
 -   [github.com/simov/markdown-syntax](https://github.com/simov/markdown-syntax/blob/main/mermaid.md)
--   [markdownguide.org](https://www.markdownguide.org/getting-started/) - source: [github.com/mattcone/markdown-guide-book](https://github.com/mattcone/markdown-guide-book/blob/master/manuscript/chapter3.md)
+-   [markdownguide.org](https://www.markdownguide.org/getting-started/) --- source: [github.com/mattcone/markdown-guide-book](https://github.com/mattcone/markdown-guide-book/blob/master/manuscript/chapter3.md)
+-   [github.com/gabyx/Technical-Markdown](https://github.com/gabyx/Technical-Markdown)
 
 
 Author

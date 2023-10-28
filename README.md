@@ -19,19 +19,55 @@ You don't want to think about typesetting details.
 You just want to throw your ideas in some plain text files and call `make`.
 
 
+Quick start
+----------------------------------
+
+Installation:
+
+I'll write installation instructions another time. For now, you can see
+hints in how the GitHub runner does the installation in the CI:
+[`workflows/ci.yml`](https://github.com/rreece/markdown-easy/blob/main/.github/workflows/ci.yml)
+
+Starting a new documents:
+
+*Note: This will delete the markdown files in this example.*
+
+```
+make newdoc
+```
+
+Start writing with a text editor.
+A first example file is created for you: `01-introduction.md`,
+but you can structure you markdown files however you like.
+
+When you are ready to make the document, call
+
+```
+make html
+```
+
+or
+
+```
+make pdf
+```
+
+*More explanation to come.*
+
+
 See also
 ----------------------------------
 
 -   [rreece.github.io/sw/markdown-memo](http://rreece.github.io/sw/markdown-memo)
--   [kprussing.github.io/writing-with-markdown](https://web.archive.org/web/20171026174128/http://kprussing.github.io/writing-with-markdown/)
 -   [pandoc.org/README.html](http://pandoc.org/README.html)
 -   [commonmark.org](http://commonmark.org/)
--   [scholarlymarkdown.com](http://scholarlymarkdown.com/)
 -   [github.com/lierdakil/pandoc-crossref](https://github.com/lierdakil/pandoc-crossref)
 
-Examples/blogs:
+Other examples/blogs of writing with markdown:
 
 -   [programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown)
+-   [kprussing.github.io/writing-with-markdown](https://web.archive.org/web/20171026174128/http://kprussing.github.io/writing-with-markdown/)
+-   [scholarlymarkdown.com](http://scholarlymarkdown.com/)
 -   [github.com/simov/markdown-syntax](https://github.com/simov/markdown-syntax/blob/main/mermaid.md)
 -   [markdownguide.org](https://www.markdownguide.org/getting-started/) --- source: [github.com/mattcone/markdown-guide-book](https://github.com/mattcone/markdown-guide-book/blob/master/manuscript/chapter3.md)
 -   [github.com/gabyx/Technical-Markdown](https://github.com/gabyx/Technical-Markdown)

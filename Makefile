@@ -119,6 +119,42 @@ over: realclean default
 
 
 ##-----------------------------------------------------------------------------
+## Be careful using these destructive targets
+
+destroy: realclean
+	rm -f *.md
+	$(PRINT) "make $@ done."
+
+destroygit: 
+	rm -rf .git
+	$(PRINT) "make $@ done."
+
+newdoc: destroy destroygit
+	@echo "Introduction" > 01-introduction.md 
+	@echo "===============================================================================" >> 01-introduction.md 
+	@echo "" >> 01-introduction.md 
+	@echo "First subsection" >> 01-introduction.md 
+	@echo "-------------------------------------------------------------------------------" >> 01-introduction.md 
+	@echo "" >> 01-introduction.md 
+	@echo "Start writing..." >> 01-introduction.md 
+	@echo "" >> 01-introduction.md 
+	@echo "" >> 01-introduction.md 
+	@echo "Conclusion" >> 01-introduction.md 
+	@echo "===============================================================================" >> 01-introduction.md 
+	@echo "" >> 01-introduction.md 
+	@echo "Ain't it something?" >> 01-introduction.md 
+	@echo "" >> 01-introduction.md 
+	@echo "" >> 01-introduction.md 
+	@echo "Acknowledgements {.unnumbered}" >> 01-introduction.md 
+	@echo "===============================================================================" >> 01-introduction.md 
+	@echo "" >> 01-introduction.md 
+	@echo "Thanks to everyone who helped with this manuscript." >> 01-introduction.md 
+	@echo "" >> 01-introduction.md 
+	@echo "" >> 01-introduction.md 
+	$(PRINT) "make $@ done."
+
+
+##-----------------------------------------------------------------------------
 ## install
 ## See: https://askubuntu.com/questions/1335772/using-pandoc-crossref-on-ubuntu-20-04
 ##-----------------------------------------------------------------------------

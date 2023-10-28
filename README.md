@@ -38,7 +38,7 @@ make newdoc
 
 Start writing with a text editor.
 A first example file is created for you: `01-introduction.md`,
-but you can structure you markdown files however you like.
+but you can structure your markdown files however you like.
 
 When you are ready to make the document, call
 
@@ -52,7 +52,7 @@ or
 make pdf
 ```
 
-*More explanation to come.*
+*More explanation to come...*
 
 
 See also

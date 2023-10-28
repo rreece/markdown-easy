@@ -11,7 +11,7 @@ SHELL := /bin/bash
 ## helpers and settings
 ##-----------------------------------------------------------------------------
 
-DATE_NOW := $(shell date +"%B %-d, %Y")
+## parse meta.yaml
 DOC_TITLE := $(shell grep '^title:' meta.yaml | head -n1 | sed -e 's/title:[[:space:]]*//' | tr -d "'" | tr -d '"')
 TEMPLATE_HTML := $(shell grep '^template_html:' meta.yaml | head -n1 | sed -e 's/template_html:[[:space:]]*//' | tr -d "'" | tr -d '"')
 TEMPLATE_TEX := $(shell grep '^template_tex:' meta.yaml | head -n1 | sed -e 's/template_tex:[[:space:]]*//' | tr -d "'" | tr -d '"')
@@ -19,11 +19,14 @@ BACKMATTER_MD := $(shell grep '^backmatter_md:' meta.yaml | head -n1 | sed -e 's
 BACKMATTER_TEX := $(shell grep '^backmatter_tex:' meta.yaml | head -n1 | sed -e 's/backmatter_tex:[[:space:]]*//' | tr -d "'" | tr -d '"')
 OUTPUT := $(shell grep '^output:' meta.yaml | head -n1 | sed -e 's/output:[[:space:]]*//' | tr -d "'" | tr -d '"')
 
+## set fixed variables
+DATE_NOW := $(shell date +"%B %-d, %Y")
 MD_FILES := $(filter-out README.md LICENSE.md VERSIONS.md, $(sort $(wildcard *.md)))
 HTML_FILES := $(MD_FILES:%.md=%.html)
 BIB_OPTIONS := --bibliography=bibs/mybib.bib --citeproc
 BIB_TXT_FILES := $(sort $(wildcard bibs/*.txt))
 
+## helpers ran within targets
 PAGE_TITLE = $(shell (grep -e '^\#' $< | head -n1 | sed -e 's/^\#[[:space:]]*//')||(grep -B1 '====' $< | head -n1))
 PRINT = @echo '==>  '
 
@@ -32,13 +35,13 @@ PRINT = @echo '==>  '
 ## main targets
 ##-----------------------------------------------------------------------------
 
-.PHONY: all default html pdf install install_for_linux install_for_mac clean realclean
+.PHONY: all default html pdf install install_for_ubuntu install_for_mac clean realclean
 
 default: html
 all: html pdf
 html: $(HTML_FILES)
 pdf: $(OUTPUT).pdf
-install: install_for_linux
+install: install_for_ubuntu
 
 
 ##-----------------------------------------------------------------------------
@@ -87,7 +90,7 @@ $(OUTPUT).tex: $(MDP_FILES) bibs/mybib.bib meta.yaml
 bibs/mybib.bib: $(BIB_TXT_FILES)
 	@if [ -z "$(BIB_TXT_FILES)" ] ; \
 	then \
-		echo "==>   ERROR: No bibliography files found in bibs/. Set dorefs=false in meta.yaml." ; \
+		echo "==>   ERROR: No bibliography files found in bibs/." ; \
 		exit 1 ; \
 	else \
 		python scripts/markdown2bib.py --out=bibs/mybib.bib $(BIB_TXT_FILES) ; \
@@ -120,8 +123,8 @@ over: realclean default
 ## See: https://askubuntu.com/questions/1335772/using-pandoc-crossref-on-ubuntu-20-04
 ##-----------------------------------------------------------------------------
 
-install_for_linux:
-	@echo "Installing for linux..." ; \
+install_for_ubuntu:
+	@echo "Installing for ubuntu..." ; \
     sudo apt-get -y update ; \
 	if [ ! -f /usr/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \

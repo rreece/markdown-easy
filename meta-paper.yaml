@@ -51,12 +51,12 @@ citation-style: templates/chicago-author-date.csl
 #submitted: ''
 #submitted: 'Submitted to My Favorite Journal'
 #submitted: 'Journal reference: *Phys. Rev. D 92*, 072001 (2015)'
-#figureTitle: "Figure"
-#tableTitle: "Table"
-#figPrefix: "Figure"
-#eqnPrefix: "eq."
-#secPrefix: "Section"
-#tblPrefix: "Table"
+#figureTitle: 'Figure'
+#tableTitle: 'Table'
+#figPrefix: 'Figure'
+#eqnPrefix: 'eq.'
+#secPrefix: 'Section'
+#tblPrefix: 'Table'
 
 ## html options -------------------------------------------
 template_html: 'templates/book_chapter.html'

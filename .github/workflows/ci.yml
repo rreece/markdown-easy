@@ -19,8 +19,8 @@ jobs:
       with:
         python-version: "3.10"
 
-    - name: Run make install_for_linux
-      run: make install_for_linux
+    - name: Run make install_for_ubuntu
+      run: make install_for_ubuntu
 
     - name: Run make html
       run: make html

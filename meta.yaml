@@ -4,32 +4,8 @@ output: example
 title: markdown-memo example document
 titleshort: markdown-memo example document
 subtitle: make writing easier and more productive
-authorshort: R. Reece and J. Coauthor
-author1: Ryan Reece
-email1: ryan.reece@gmail.com
-homepage1: http://rreece.github.io
-affiliation1: University of California, Santa Cruz
-author2: Jane Coauthor
-email2: jane.coauthor@blah.com
-homepage2: http://jane.blah.com
-affiliation2: Joe University
-#author3: Joe Coauthor
-#email3: joe.coauthor@blah.com
-#homepage3: http://joe.blah.com
-#affiliation3: Joe University
-author:
-    -   |
-        [Ryan Reece](http://rreece.github.io/)[^ReeceSCIPP]
-
-        [^ReeceSCIPP]: University of California, Santa Cruz / <ryan.reece@gmail.com> / <http://rreece.github.io>
-    -   |
-        Jane Coauthor[^Jane]
-
-        [^Jane]: Joe University, Joeville / <jane@joe.edu> / <http://jane.joe.edu>
-#    -   |
-#        Joe Coauthor[^Joe]
-#
-#        [^Joe]: Joe University, Joeville / <joe@joe.edu> / <http://joe.joe.edu>
+author: Ryan Reece
+authorshort: R. Reece
 
 ## optional -----------------------------------------------
 abstract: |
@@ -43,19 +19,29 @@ keywords: academic writing, blogging, digital humanities, LaTeX, Markdown, open 
 #citation-style: templates/apa-no-doi-no-issue-with-notes.csl
 citation-style: templates/chicago-author-date.csl
 #date: "January 1, 2017"
-#docid: EXAMPLE-DOC-000
 draft: true  # used with fancyhdr
-#license: '&copy; 2015-2023 [Ryan Reece](http://rreece.github.io/). All rights reserved.'
-#license: '<span class="copy-left">&copy;</span> 2015-2023 [Ryan Reece](http://rreece.github.io/). Licensed for sharing under [CC-BY-4.0](http://creativecommons.org/licenses/by/4.0/).'
-#dorefs: true # TODO: needed?
-#submitted: 'Submitted to My Favorite Journal'
-#submitted: 'Journal reference: *Phys. Rev. D 92*, 072001 (2015)'
-#figureTitle: "Figure"
-#tableTitle: "Table"
-#figPrefix: "Figure"
-#eqnPrefix: "eq."
-#secPrefix: "Section"
-#tblPrefix: "Table"
+copyright: '\copyright 2023 Ryan Reece. All rights reserved.'
+copycredits: |
+    To request permissions, contact author@email.com
+
+    First printing edition 2023.
+
+    Cover art by Artist.
+
+    ISBN: 978-0-19-123456-1
+publisher: 'My Publishing Co.'
+preface: |
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo nulla facilisi nullam vehicula ipsum. Quisque non tellus orci ac. Diam sollicitudin tempor id eu nisl nunc. Auctor eu augue ut lectus arcu bibendum at varius. Scelerisque eleifend donec pretium vulputate sapien nec sagittis. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque. Et malesuada fames ac turpis egestas integer eget. Sit amet consectetur adipiscing elit. Netus et malesuada fames ac turpis. Sit amet est placerat in egestas erat imperdiet sed. Vestibulum lorem sed risus ultricies tristique nulla aliquet.
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo nulla facilisi nullam vehicula ipsum. Quisque non tellus orci ac. Diam sollicitudin tempor id eu nisl nunc. Auctor eu augue ut lectus arcu bibendum at varius. Scelerisque eleifend donec pretium vulputate sapien nec sagittis. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque. Et malesuada fames ac turpis egestas integer eget. Sit amet consectetur adipiscing elit. Netus et malesuada fames ac turpis. Sit amet est placerat in egestas erat imperdiet sed. Vestibulum lorem sed risus ultricies tristique nulla aliquet.
+
+    Eu augue ut lectus arcu bibendum at varius vel pharetra. Viverra adipiscing at in tellus integer feugiat scelerisque varius morbi. Eu ultrices vitae auctor eu augue ut lectus. Sed id semper risus in. Odio eu feugiat pretium nibh. In nibh mauris cursus mattis molestie a iaculis. Potenti nullam ac tortor vitae purus faucibus ornare. Tortor posuere ac ut consequat semper viverra. Scelerisque purus semper eget duis. Et egestas quis ipsum suspendisse ultrices gravida dictum fusce ut. Nisi scelerisque eu ultrices vitae auctor eu augue ut lectus.
+#figureTitle: 'Figure'
+#tableTitle: 'Table'
+#figPrefix: 'Figure'
+#eqnPrefix: 'eq.'
+#secPrefix: 'Section'
+#tblPrefix: 'Table'
 
 ## html options -------------------------------------------
 template_html: 'templates/book_chapter.html'
@@ -81,14 +67,14 @@ classoption:
     -   'letterpaper'
     -   'openright'
     -   'twoside'
-fancyhdr: false
+fancyhdr: true
 fontsize: '11pt'
 fontfamily: 'mathpazo'
 geometry: 
     -   'paperwidth=8.5in'
     -   'paperheight=11in'
-    -   'top=1in'
-    -   'bottom=1in'
+    -   'top=1.25in'
+    -   'bottom=1.25in'
     -   'left=1.25in'
     -   'right=1.25in'
     -   'headheight=14pt'
@@ -97,7 +83,8 @@ hyperref: true
 #linestretch: '1.1'
 lof: false
 lot: false
-maketitle: true
+makecoverpage: true
+maketitlepage: true
 numbersections: true
 parskip: '11pt'
 secnewpage: false

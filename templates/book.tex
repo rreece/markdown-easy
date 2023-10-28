@@ -76,10 +76,10 @@ $endif$
   $endif$
 \fi
 
-% use upquote if available, for straight quotes in verbatim environments
+%% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 
-% use microtype if available
+%% use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
 
 $if(geometry)$
@@ -130,12 +130,13 @@ $if(graphics)$
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
 \makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
+%% Scale images if necessary, so that they will not overflow the page
+%% margins by default, and it is still possible to overwrite the defaults
+%% using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 $endif$
 
+%% hyperref
 $if(hyperref)$
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
@@ -162,14 +163,14 @@ $if(hyperref)$
 %\renewcommand{\UrlFont}{\footnotesize\itshape}
 $endif$
 
+%% Make links footnotes instead of hotlinks:
 $if(links-as-notes)$
-% Make links footnotes instead of hotlinks:
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 $endif$
 
 $if(strikeout)$
 \usepackage[normalem]{ulem}
-% avoid problems with \sout in headers with hyperref:
+%% avoid problems with \sout in headers with hyperref:
 $if(hyperref)$
 \pdfstringdefDisableCommands{\renewcommand{\sout}{}}
 $endif$
@@ -181,8 +182,9 @@ $else$
 \setcounter{secnumdepth}{0}
 $endif$
 
+%% allows verbatim text in footnotes
 $if(verbatim-in-note)$
-\VerbatimFootnotes % allows verbatim text in footnotes
+\VerbatimFootnotes
 $endif$
 
 %% add spacing after footnote
@@ -200,6 +202,7 @@ $endif$
 
 \usepackage{xcolor}
 
+%% pagebreak after sections
 $if(secnewpage)$
 \usepackage{titlesec}
 \newcommand{\sectionbreak}{\clearpage}
@@ -210,27 +213,6 @@ $endif$
 $if(fancyhdr)$
 \usepackage{fancyhdr}
 
-$if(license)$
-%% overwrite the plain pagestyle which is used by maketitle for the titlepage
-\fancypagestyle{plain}{
-    \fancyhf{} % clear all header and footer fields
-    $if(draft)$
-    \fancyhead[LO]{\color{gray} \footnotesize DRAFT: \today{}. Please do not cite without permission.}
-    $endif$
-    $if(docid)$
-    \fancyhead[RO]{\footnotesize $docid$}
-    $endif$
-    $if(license)$
-    $if(submitted)$
-    \fancyfoot[LO]{ {\footnotesize $license$ \\* $submitted$} }
-    $else$
-    \fancyfoot[LO]{ {\footnotesize $license$} }
-    $endif$
-    $endif$
-    \renewcommand\headrulewidth{0pt}
-}
-$endif$
-
 \fancypagestyle{mainstyle}{
     \fancyhf{} % clear all header and footer fields
     \fancyhead[RO]{\textit{$authorshort$}}
@@ -240,14 +222,20 @@ $endif$
     \fancyhead[LO]{\color{gray} \footnotesize DRAFT: \today}
     \fancyhead[RE]{\color{gray} \footnotesize DRAFT: \today}
     $endif$
+    \renewcommand\headrulewidth{0pt}
 }
 
-% endif fancyhdr
+%% endif fancyhdr
 $endif$
 
+%% paragraph setttings
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt} % only for abstract, reset later
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
+$if(parskip)$
+\setlength{\parskip}{$parskip$}
+$else$
+\setlength{\parskip}{11pt}
+$endif$
 
 %% remove "Abstract" from the abstract
 \usepackage{abstract}
@@ -274,27 +262,30 @@ $endif$
 \captionsetup{font=small,labelfont=bf,format=hang}
 
 %% tightlist hack
-\providecommand{\tightlist}{%
+\providecommand{\tightlist}{
       \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+%% titlepage style
+\pretitle{\begin{center}\Huge\textbf }
+\posttitle{\par\end{center}\vskip 0.5em}
 
 %% chapterstyle
 $if(chapterstyle)$
 \chapterstyle{$chapterstyle$}
 $endif$
 
-\pretitle{\begin{center}\Huge\textbf }
-\posttitle{\par\end{center}\vskip 0.5em}
-
 
 %%=============================================================================
 \begin{document}
 %%=============================================================================
 
+\frontmatter
+\pagestyle{empty}
+
 %% set document metadata
 %% ----------------------------------------------------------------------------
 %% title ----------------------------------------
-$if(title)$\title{$title$$if(subtitle)$:\\\vspace{0.5em}{\large $subtitle$}$endif$}$endif$
+$if(title)$\title{$title$$if(subtitle)$ \\ \vspace{0.5em}{\large $subtitle$}$endif$}$endif$
 
 %% authors --------------------------------------
 $if(author)$\author{$for(author)$$author$$sep$ \and $endfor$}$endif$
@@ -306,39 +297,116 @@ $else$
 \date{$date_now$}
 $endif$
 
-%% maketitle ------------------------------------
-$if(maketitle)$
+%% makecoverpage ------------------------------------
+$if(makecoverpage)$
 
-%\thispagestyle{empty}
-%
-%\noindent\rule{\textwidth}{2pt}
-%
-%{\let\newpage\relax\maketitle}
-%
-%\noindent\rule{\textwidth}{2pt}
+\begin{flushleft}
 
-\maketitle
+{\noindent\Huge\bfseries $title$}\\
+
+\vspace{2\baselineskip}
+
+$if(subtitle)$ {\Large\itshape $subtitle$}\\ $endif$
+
+\vspace{4\baselineskip}
+
+{\Large \theauthor}\par
 
 $if(draft)$
-\begin{center}
-DRAFT: Please do not cite without permission.
-\end{center}
-$endif$
+\vspace{1\baselineskip}
+{\today}\\
+DRAFT: Please do not cite without permission.\\
+$endif$ % draft
 
-\vspace{0.6cm}
-$endif$
+\end{flushleft}
 
-%% abstract -------------------------------------
+\vfill
+
+%% abstract
 $if(abstract)$
 \begin{abstract}
+\setlength{\parskip}{8pt} % only for abstract, reset later
 \noindent $abstract$
 $if(keywords)$
 
 \emph{Keywords:} $keywords$
-$endif$
+$endif$ % keywords
 \end{abstract}
+$endif$ % abstract
+
+\vfill
+
+$endif$ % makecoverpage
+
+%% maketitlepage --------------------------------
+$if(maketitlepage)$
+\cleardoublepage
+
+\newcommand{\maketitlepage}{
+\begingroup% Gentle Madness
+\hbox{
+\hspace*{0.2\textwidth}
+\rule{1pt}{\textheight}
+\hspace*{0.05\textwidth}
+\parbox[b]{0.75\textwidth}{
+\vbox{
+\vspace{0.1\textheight}
+{\noindent\HUGE\bfseries $title$}\\[2\baselineskip]
+$if(subtitle)$ {\Large\itshape $subtitle$}\\[4\baselineskip] $endif$
+{\Large $author$}\par
+\vspace{0.5\textheight}
+$if(publisher)$ {\noindent $publisher$ }\\[\baselineskip]  $endif$
+}% end of vbox
+}% end of parbox
+}% end of hbox
+\vfill
+\null
+\endgroup
+}
+
+\maketitlepage
+$endif$ % maketitlepage
+
+%% copyright ------------------------------------
+$if(copyright)$
+%\clearpage % not needed
+
+\newcommand{\makecopypage}{
+\begingroup
+\vfill
+\begin{flushleft}
+$copyright$ \\
+$if(copycredits)$
+\vspace{1\baselineskip}
+$copycredits$ \\
+$endif$ % copycredits
+\end{flushleft}
+\vfill
+\null
+\endgroup
+}
+
+\makecopypage
+$endif$ % copyright
+
+
+%% ----------------------------------------------
+$if(parskip)$
+\setlength{\parskip}{$parskip$}
+$else$
+\setlength{\parskip}{11pt}
 $endif$
 
+
+%% preface --------------------------------------
+$if(preface)$
+\clearpage
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+$preface$
+$endif$
 
 %% ----------------------------------------------
 $for(include-before)$
@@ -348,29 +416,25 @@ $endfor$
 $if(toc)$
 \cleardoublepage
 \tableofcontents
-%\clearpage
-\cleardoublepage
-$endif$
-
-$if(fancyhdr)$
-\pagestyle{mainstyle}
 $endif$
 
 $if(lot)$
+\cleardoublepage
 \listoftables
-\clearpage
 $endif$
 
 $if(lof)$
+\cleardoublepage
 \listoffigures
-\clearpage
 $endif$
 
+\cleardoublepage
+
 %%-----------------------------------------------------------------------------
-$if(parskip)$
-\setlength{\parskip}{$parskip$}
-$else$
-\setlength{\parskip}{11pt}
+\mainmatter
+
+$if(fancyhdr)$
+\pagestyle{mainstyle}
 $endif$
 
 $if(spacing)$
@@ -382,7 +446,10 @@ $body$
 $if(spacing)$
 \end{spacing}
 $endif$
+
+
 %%-----------------------------------------------------------------------------
+\backmatter
 
 $if(natbib)$
 $if(biblio-files)$

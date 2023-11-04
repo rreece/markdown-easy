@@ -1,4 +1,5 @@
-markdown-easy
+# markdown-easy
+
 ===========================
 
 [![CI badge](https://github.com/rreece/markdown-easy/actions/workflows/ci.yml/badge.svg)](https://github.com/rreece/markdown-easy/actions)
@@ -19,7 +20,8 @@ You don't want to think about typesetting details.
 You just want to throw your ideas in some plain text files and call `make`.
 
 
-Quick start
+## Quick start
+
 ----------------------------------
 
 Installation:

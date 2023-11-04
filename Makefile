@@ -27,7 +27,7 @@ BIB_OPTIONS := --bibliography=bibs/mybib.bib --citeproc
 BIB_TXT_FILES := $(sort $(wildcard bibs/*.txt))
 
 ## helpers ran within targets
-PAGE_TITLE = $(shell (grep -e '^\#' $< | head -n1 | sed -e 's/^\#[[:space:]]*//')||(grep -B1 '====' $< | head -n1))
+PAGE_TITLE = $(shell (grep '^\#' $< | head -n1 | sed -e 's/^\#[[:space:]]*//')||(grep -B1 '====' $< | head -n1))
 PRINT = @echo '==>  '
 
 

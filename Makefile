@@ -161,10 +161,10 @@ newdoc: destroy destroygit
 
 install_for_ubuntu:
 	@echo "Installing for ubuntu..." ; \
-    sudo apt-get -y update ; \
+	sudo apt-get -y update ; \
 	if [ ! -f /usr/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
-    	sudo apt-get -y install texlive-latex-extra ; \
+		sudo apt-get -y install texlive-latex-extra ; \
 	fi ; \
 	echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/bin/pandoc ]; then \
@@ -176,12 +176,12 @@ install_for_ubuntu:
 	pandoc --version ; \
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
 		echo "Installing pandoc-crossref..." ; \
-    	wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.10.0a/pandoc-crossref-Linux.tar.xz ; \
-    	tar -xf pandoc-crossref-Linux.tar.xz ; \
-    	sudo mv pandoc-crossref /usr/local/bin/ ; \
-    	sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
-    	sudo mkdir -p /usr/local/man/man1 ; \
-    	sudo mv pandoc-crossref.1  /usr/local/man/man1 ; \
+		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.10.0a/pandoc-crossref-Linux.tar.xz ; \
+		tar -xf pandoc-crossref-Linux.tar.xz ; \
+		sudo mv pandoc-crossref /usr/local/bin/ ; \
+		sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
+		sudo mkdir -p /usr/local/man/man1 ; \
+		sudo mv pandoc-crossref.1  /usr/local/man/man1 ; \
 	fi ; \
 	echo "which pandoc-crossref: `which pandoc-crossref`" ; \
 	echo "Installing other dependencies..." ; \
@@ -214,9 +214,9 @@ install_for_mac:
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
 		echo "Installing pandoc-crossref..." ; \
 		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.10.0a/pandoc-crossref-macOS.tar.xz ; \
-    	tar -xf pandoc-crossref-macOS.tar.xz ; \
-    	sudo mv pandoc-crossref /usr/local/bin/ ; \
-    	sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
+		tar -xf pandoc-crossref-macOS.tar.xz ; \
+		sudo mv pandoc-crossref /usr/local/bin/ ; \
+		sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
 	fi ; \
 	echo "which pandoc-crossref: `which pandoc-crossref`" ; \
 	echo "Installing other dependencies..." ; \

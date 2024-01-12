@@ -49,3 +49,24 @@ jobs:
     - name: Run make pdf
       run: make pdf
 
+  build_windows:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+
+    - name: Run make install_for_windows
+      run: make install_for_windows
+
+    - name: Run make html
+      run: make html
+
+    - name: Run make pdf
+      run: make pdf
+

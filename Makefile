@@ -224,3 +224,31 @@ install_for_mac:
 	pip install -r requirements.txt ;
 	$(PRINT) "make $@ done."
 
+install_for_windows:
+	@echo "Installing for windows..." ; \
+	echo "which wget: `which wget`" ; \
+	wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe ; \
+	install-tl-windows.exe  -gui text ; \
+	echo "which pdflatex: `which pdflatex`" ;
+	$(PRINT) "make $@ done."
+
+#	if [ ! -f /usr/local/bin/pandoc ]; then \
+#		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-windows-x86_64.zip ; \
+#		echo "Installing pandoc..." ; \
+#		sudo installer -pkg pandoc-2.13-macOS.pkg -target / ; \
+#	fi ; \
+#	echo "which pandoc: `which pandoc`" ; \
+#	pandoc --version ; \
+#	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
+#		echo "Installing pandoc-crossref..." ; \
+#		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.10.0a/pandoc-crossref-Windows.7z ; \
+#		tar -xf pandoc-crossref-macOS.tar.xz ; \
+#		sudo mv pandoc-crossref /usr/local/bin/ ; \
+#		sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
+#	fi ; \
+#	echo "which pandoc-crossref: `which pandoc-crossref`" ; \
+#	echo "Installing other dependencies..." ; \
+#	pip install --upgrade pip ; \
+#	pip install -r requirements.txt ;
+#	$(PRINT) "make $@ done."
+

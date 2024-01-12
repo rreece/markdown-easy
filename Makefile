@@ -187,7 +187,7 @@ install_for_ubuntu:
 	if [ ! -f requirements.txt ]; then \
 		echo "pip installing other dependencies..." ; \
 		pip install --upgrade pip ; \
-		pip install -r requirements.txt ;
+		pip install -r requirements.txt ; \
 	fi ;
 	$(PRINT) "make $@ done."
 
@@ -224,7 +224,7 @@ install_for_mac:
 	if [ ! -f requirements.txt ]; then \
 		echo "pip installing other dependencies..." ; \
 		pip install --upgrade pip ; \
-		pip install -r requirements.txt ;
+		pip install -r requirements.txt ; \
 	fi ;
 	$(PRINT) "make $@ done."
 
@@ -256,7 +256,7 @@ install_for_windows:
 	if [ ! -f requirements.txt ]; then \
 		echo "pip installing other dependencies..." ; \
 		pip install --upgrade pip ; \
-		pip install -r requirements.txt ;
+		pip install -r requirements.txt ; \
 	fi ;
 	$(PRINT) "make $@ done."
 

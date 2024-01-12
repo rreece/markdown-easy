@@ -226,9 +226,11 @@ install_for_mac:
 
 install_for_windows:
 	@echo "Installing for windows..." ; \
+	echo "Installing wget through pip..." ; \
+	pip install wget ; \
 	echo "which wget: `which wget`" ; \
 	wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe ; \
-	install-tl-windows.exe  -gui text ; \
+	install-tl-windows.exe -gui text ; \
 	echo "which pdflatex: `which pdflatex`" ;
 	$(PRINT) "make $@ done."
 

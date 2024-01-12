@@ -240,7 +240,7 @@ install_for_windows:
 	if [ ! -f /usr/local/bin/pandoc ]; then \
 		echo "Installing pandoc..." ; \
 		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-windows-x86_64.zip ; \
-		cmd /u /c "unzip pandoc-2.13-windows-x86_64.zip"
+		cmd /u /c "unzip pandoc-2.13-windows-x86_64.zip" ; \
 		sudo installer -pkg pandoc-2.13-macOS.pkg -target / ; \
 	fi ; \
 	echo "which pandoc: `which pandoc`" ; \

@@ -233,7 +233,8 @@ install_for_windows:
 	choco install wget ; \
 	if [ ! -f /usr/local/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
-		choco install texlive --params="/collections:latex" ; \
+		choco install texlive ; \
+		ls * ; \
 		ls /c/tools/install-tl-13012402 ; \
 	fi ;
 	@echo "which latex: `which latex`" ;
@@ -263,6 +264,7 @@ install_for_windows:
 	$(PRINT) "make $@ done."
 
 
+#		choco install texlive --params="/collections:latex" ; \
 #		wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe ; \
 #		cmd /u /c "install-tl-windows -no-interaction -no-gui -v -no-cls" ; \
 

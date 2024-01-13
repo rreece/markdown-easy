@@ -236,7 +236,8 @@ install_for_windows:
 		choco install texlive ; \
 		pwd ; \
 		echo "PATH = ${PATH}" ; \
-		cygpath -u C:\\tools\\install-tl-13012419 ; \
+		cygpath -u "C:\\tools\\install-tl-13012419" ; \
+		ls /c/tools/install-tl-13012419 ; \
 		ls /* ; \
 	fi ;
 	@echo "which latex: `which latex`" ;

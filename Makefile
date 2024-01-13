@@ -81,11 +81,13 @@ $(OUTPUT).tex: $(MDP_FILES) bibs/mybib.bib meta.yaml
 
 ## create the pdf from tex
 %.pdf: %.tex
-	@pdflatex -interaction=nonstopmode $< > latex.log 2>&1
-	@pdflatex -interaction=nonstopmode $< > latex.log 2>&1
-	@pdflatex -interaction=nonstopmode $< > latex.log 2>&1
-	@cat latex.log
-	$(PRINT) "make $@ done."
+	pdflatex -help
+	pdflatex $<
+
+#	@pdflatex -interaction=nonstopmode $< > latex.log 2>&1
+#	@pdflatex -interaction=nonstopmode $< > latex.log 2>&1
+#	@pdflatex -interaction=nonstopmode $< > latex.log 2>&1
+#	$(PRINT) "make $@ done."
 
 ## create bibs/mybib.bib from bibs/*.txt
 bibs/mybib.bib: $(BIB_TXT_FILES)

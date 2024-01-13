@@ -234,7 +234,7 @@ install_for_windows:
 	if [ ! -f /c/texlive/2024/bin/windows/pdflatex.exe ]; then \
 		echo "Installing texlive..." ; \
 		choco install texlive ; \
-		choco install p7zip ; \
+		choco install 7zip.install ; \
 	fi ;
 	@echo "which latex: `which latex`" ;
 	@echo "which pdftex: `which pdftex`" ;

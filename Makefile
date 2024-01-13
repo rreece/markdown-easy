@@ -81,7 +81,6 @@ $(OUTPUT).tex: $(MDP_FILES) bibs/mybib.bib meta.yaml
 
 ## create the pdf from tex
 %.pdf: %.tex
-	pdflatex -help
 	pdflatex $<
 
 #	@pdflatex -interaction=nonstopmode $< > latex.log 2>&1
@@ -236,7 +235,7 @@ install_for_windows:
 	choco install wget ; \
 	if [ ! -f /c/texlive/2024/bin/windows/pdflatex.exe ]; then \
 		echo "Installing texlive..." ; \
-		choco install texlive ; \
+		choco install texlive --params="/collections:latexextra" ; \
 	fi ;
 	@echo "which latex: `which latex`" ;
 	@echo "which pdftex: `which pdftex`" ;
@@ -245,6 +244,7 @@ install_for_windows:
 		echo "Installing pandoc..." ; \
 		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-windows-x86_64.zip ; \
 		unzip pandoc-2.13-windows-x86_64.zip ; \
+		ls ; \
 		mv pandoc-2.13/pandoc.exe /c/texlive/2024/bin/windows/ ; \
 	fi ;
 	@echo "which pandoc: `which pandoc`" ; \
@@ -253,8 +253,8 @@ install_for_windows:
 		echo "Installing pandoc-crossref..." ; \
 		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.10.0a/pandoc-crossref-Windows.7z ; \
 		7z x pandoc-crossref-Windows.7z ; \
-		mv pandoc-crossref.exe /c/texlive/2024/bin/windows/ ; \
 		ls ; \
+		mv pandoc-crossref.exe /c/texlive/2024/bin/windows/ ; \
 	fi ;
 	@echo "which pandoc-crossref: `which pandoc-crossref`" ; \
 	if [ ! -f requirements.txt ]; then \

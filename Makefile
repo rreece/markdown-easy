@@ -164,7 +164,7 @@ install_for_ubuntu:
 	sudo apt-get -y update ; \
 	if [ ! -f /usr/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
-		sudo apt-get -y install texlive ; \
+		sudo apt-get -y install texlive-latex-recommended ; \
 	fi ;
 	@echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/bin/pandoc ]; then \
@@ -238,6 +238,8 @@ install_for_windows:
 		ls /d/a/markdown-easy/markdown-easy ; \
 		echo "PATH = ${PATH}" ; \
 		cygpath -u "C:\\tools\\install-tl-13012419" ; \
+		ls /c/ ; \
+		ls /c/a/ ; \
 		ls /c/tools/install-tl-13012419 ; \
 		ls /* ; \
 	fi ;

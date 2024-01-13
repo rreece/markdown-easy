@@ -238,10 +238,10 @@ install_for_windows:
 		ls /d/a/markdown-easy/markdown-easy ; \
 		echo "PATH = ${PATH}" ; \
 		cygpath -u "C:\\tools\\install-tl-13012419" ; \
+		echo "ls /c/" ; \
 		ls /c/ ; \
+		echo "ls /c/tools/" ; \
 		ls /c/tools/ ; \
-		ls /c/tools/install-tl-13012419 ; \
-		ls /* ; \
 	fi ;
 	@echo "which latex: `which latex`" ;
 	@echo "which pdftex: `which pdftex`" ;

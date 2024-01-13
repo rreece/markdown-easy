@@ -3,7 +3,7 @@
 ## See installation targets at the bottom.
 ##-----------------------------------------------------------------------------
 
-#SHELL := /bin/bash
+SHELL := /bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 
 
@@ -234,8 +234,10 @@ install_for_windows:
 	if [ ! -f /usr/local/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
 		choco install texlive ; \
+		pwd ; \
+		echo "PATH = ${PATH}" ; \
+		cygpath -u C:\tools\install-tl-13012419 ; \
 		ls /* ; \
-		ls /c/tools/install-tl-13012402 ; \
 	fi ;
 	@echo "which latex: `which latex`" ;
 	@echo "which pdftex: `which pdftex`" ;

@@ -234,22 +234,8 @@ install_for_windows:
 	if [ ! -f /c/texlive/2024/bin/windows/pdflatex.exe ]; then \
 		echo "Installing texlive..." ; \
 		choco install texlive ; \
-		pwd ; \
-		ls /d/a/markdown-easy/markdown-easy ; \
-		echo "PATH = ${PATH}" ; \
-		cygpath -u "C:\\tools\\install-tl-13012419" ; \
-		echo "ls /c/" ; \
-		ls /c/ ; \
-		echo "ls /c/tools/" ; \
-		ls /c/tools/ ; \
-		echo "ls /c/texlive/*" ; \
-		ls /c/texlive/* ; \
-		echo "ls /c/texlive/2024/*" ; \
-		ls /c/texlive/2024/* ; \
-		echo "ls /c/texlive/2024/bin/windows" ; \
-		ls /c/texlive/2024/bin/windows ; \
+		choco install p7zip ; \
 	fi ;
-	cmd refreshenv
 	@echo "which latex: `which latex`" ;
 	@echo "which pdftex: `which pdftex`" ;
 	@echo "which pdflatex: `which pdflatex`" ; \
@@ -264,7 +250,7 @@ install_for_windows:
 	if [ ! -f /c/texlive/2024/bin/windows/pandoc-crossref.exe ]; then \
 		echo "Installing pandoc-crossref..." ; \
 		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.10.0a/pandoc-crossref-Windows.7z ; \
-		unzip pandoc-crossref-Windows.7z ; \
+		7za pandoc-crossref-Windows.7z ; \
 		ls ; \
 	fi ;
 	@echo "which pandoc-crossref: `which pandoc-crossref`" ; \

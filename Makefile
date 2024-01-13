@@ -234,15 +234,15 @@ install_for_windows:
 	if [ ! -f /usr/local/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
 		choco install texlive ; \
-	fi ; \
-	echo "which pdflatex: `which pdflatex`" ; \
+	fi ;
+	@echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/local/bin/pandoc ]; then \
 		echo "Installing pandoc..." ; \
 		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-windows-x86_64.zip ; \
 		unzip pandoc-2.13-windows-x86_64.zip ; \
 		ls ; \
-	fi ; \
-	echo "which pandoc: `which pandoc`" ; \
+	fi ;
+	@echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
 		echo "Installing pandoc-crossref..." ; \
@@ -250,8 +250,8 @@ install_for_windows:
 		tar -xf pandoc-crossref-macOS.tar.xz ; \
 		sudo mv pandoc-crossref /usr/local/bin/ ; \
 		sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
-	fi ; \
-	echo "which pandoc-crossref: `which pandoc-crossref`" ; \
+	fi ;
+	@echo "which pandoc-crossref: `which pandoc-crossref`" ; \
 	if [ ! -f requirements.txt ]; then \
 		echo "pip installing other dependencies..." ; \
 		pip install --upgrade pip ; \

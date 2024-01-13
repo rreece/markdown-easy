@@ -242,6 +242,8 @@ install_for_windows:
 		ls /c/ ; \
 		echo "ls /c/tools/" ; \
 		ls /c/tools/ ; \
+		echo "ls /c/texlive/" ; \
+		ls /c/texlive/ ; \
 	fi ;
 	@echo "which latex: `which latex`" ;
 	@echo "which pdftex: `which pdftex`" ;

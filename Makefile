@@ -244,12 +244,10 @@ install_for_windows:
 		ls /c/tools/ ; \
 		echo "ls /c/texlive/*" ; \
 		ls /c/texlive/* ; \
-		echo "ls /c/texlive/2023/*" ; \
-		ls /c/texlive/2023/* ; \
 		echo "ls /c/texlive/2024/*" ; \
 		ls /c/texlive/2024/* ; \
-		echo "ls /c/texlive/2024/bin/*" ; \
-		ls /c/texlive/2024/bin/* ; \
+		echo "ls /c/texlive/2024/bin/windows" ; \
+		ls /c/texlive/2024/bin/windows ; \
 	fi ;
 	cmd refreshenv
 	@echo "which latex: `which latex`" ;

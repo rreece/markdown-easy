@@ -165,14 +165,14 @@ install_for_ubuntu:
 	if [ ! -f /usr/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
 		sudo apt-get -y install texlive-latex-extra ; \
-	fi ; \
-	echo "which pdflatex: `which pdflatex`" ; \
+	fi ;
+	@echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/bin/pandoc ]; then \
 		echo "Installing pandoc..." ; \
 		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-1-amd64.deb ; \
 		sudo dpkg -i pandoc-2.13-1-amd64.deb ; \
-	fi ; \
-	echo "which pandoc: `which pandoc`" ; \
+	fi ;
+	@echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
 		echo "Installing pandoc-crossref..." ; \
@@ -182,8 +182,8 @@ install_for_ubuntu:
 		sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
 		sudo mkdir -p /usr/local/man/man1 ; \
 		sudo mv pandoc-crossref.1  /usr/local/man/man1 ; \
-	fi ; \
-	echo "which pandoc-crossref: `which pandoc-crossref`" ; \
+	fi ;
+	@echo "which pandoc-crossref: `which pandoc-crossref`" ; \
 	if [ ! -f requirements.txt ]; then \
 		echo "pip installing other dependencies..." ; \
 		pip install --upgrade pip ; \
@@ -204,14 +204,14 @@ install_for_mac:
 	if [ ! -f /usr/local/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
 		brew install texlive ; \
-	fi ; \
-	echo "which pdflatex: `which pdflatex`" ; \
+	fi ;
+	@echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/local/bin/pandoc ]; then \
 		echo "Installing pandoc..." ; \
 		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-macOS.pkg ; \
 		sudo installer -pkg pandoc-2.13-macOS.pkg -target / ; \
-	fi ; \
-	echo "which pandoc: `which pandoc`" ; \
+	fi ;
+	@echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
 		echo "Installing pandoc-crossref..." ; \
@@ -219,8 +219,8 @@ install_for_mac:
 		tar -xf pandoc-crossref-macOS.tar.xz ; \
 		sudo mv pandoc-crossref /usr/local/bin/ ; \
 		sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
-	fi ; \
-	echo "which pandoc-crossref: `which pandoc-crossref`" ; \
+	fi ;
+	@echo "which pandoc-crossref: `which pandoc-crossref`" ; \
 	if [ ! -f requirements.txt ]; then \
 		echo "pip installing other dependencies..." ; \
 		pip install --upgrade pip ; \
@@ -233,7 +233,8 @@ install_for_windows:
 	choco install wget ; \
 	if [ ! -f /usr/local/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
-		choco install texlive --params="/collections:latexextra" ; \
+		choco install texlive --params="/collections:latex" ; \
+		refreshenv ; \
 	fi ;
 	@echo "which latex: `which latex`" ;
 	@echo "which pdftex: `which pdftex`" ;

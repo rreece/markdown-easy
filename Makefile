@@ -3,7 +3,7 @@
 ## See installation targets at the bottom.
 ##-----------------------------------------------------------------------------
 
-SHELL := /bin/bash
+#SHELL := /bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 
 

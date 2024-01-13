@@ -233,7 +233,7 @@ install_for_windows:
 	choco install wget ; \
 	if [ ! -f /usr/local/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
-		choco install texlive ; \
+		choco install texlive --params="/collections:latexextra" ; \
 	fi ;
 	@echo "which latex: `which latex`" ;
 	@echo "which pdftex: `which pdftex`" ;

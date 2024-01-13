@@ -234,14 +234,14 @@ install_for_windows:
 	if [ ! -f /usr/local/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
 		wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe ; \
-		cmd /u /c "install-tl-windows.exe -no-gui" ; \
+		cmd /u /c "install-tl-windows -no-interaction -no-gui -v -no-cls" ; \
 	fi ; \
 	echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/local/bin/pandoc ]; then \
 		echo "Installing pandoc..." ; \
 		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-windows-x86_64.zip ; \
 		cmd /u /c "unzip pandoc-2.13-windows-x86_64.zip" ; \
-		sudo installer -pkg pandoc-2.13-macOS.pkg -target / ; \
+		cmd /u /c "ls ." ; \
 	fi ; \
 	echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \

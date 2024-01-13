@@ -235,6 +235,8 @@ install_for_windows:
 		echo "Installing texlive..." ; \
 		choco install texlive ; \
 	fi ;
+	@echo "which latex: `which latex`" ;
+	@echo "which pdftex: `which pdftex`" ;
 	@echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/local/bin/pandoc ]; then \
 		echo "Installing pandoc..." ; \

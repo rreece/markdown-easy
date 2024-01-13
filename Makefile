@@ -234,8 +234,8 @@ install_for_windows:
 	if [ ! -f /usr/local/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
 		choco install texlive --params="/collections:latex" ; \
-		cmd /u /c "ls C:\tools\install-tl-13012402" ; \
-		cmd /u /c "refreshenv" ; \
+		ls / ; \
+		ls /mnt ; \
 	fi ;
 	@echo "which latex: `which latex`" ;
 	@echo "which pdftex: `which pdftex`" ;

@@ -84,6 +84,7 @@ $(OUTPUT).tex: $(MDP_FILES) bibs/mybib.bib meta.yaml
 	@pdflatex -interaction=nonstopmode $< > latex.log 2>&1
 	@pdflatex -interaction=nonstopmode $< > latex.log 2>&1
 	@pdflatex -interaction=nonstopmode $< > latex.log 2>&1
+	@cat latex.log
 	$(PRINT) "make $@ done."
 
 ## create bibs/mybib.bib from bibs/*.txt

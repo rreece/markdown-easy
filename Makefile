@@ -257,7 +257,7 @@ install_for_windows:
 		echo "Installing pandoc..." ; \
 		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-windows-x86_64.zip ; \
 		unzip pandoc-2.13-windows-x86_64.zip ; \
-		ls ; \
+		mv pandoc-2.13/pandoc.exe /c/texlive/2024/bin/windows/ ; \
 	fi ;
 	@echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \

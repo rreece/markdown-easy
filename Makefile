@@ -233,8 +233,7 @@ install_for_windows:
 	choco install wget ; \
 	if [ ! -f /usr/local/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
-		wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe ; \
-		cmd /u /c "install-tl-windows -no-interaction -no-gui -v -no-cls" ; \
+		choco install texlive ; \
 	fi ; \
 	echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/local/bin/pandoc ]; then \
@@ -259,4 +258,8 @@ install_for_windows:
 		pip install -r requirements.txt ; \
 	fi ;
 	$(PRINT) "make $@ done."
+
+
+#		wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe ; \
+#		cmd /u /c "install-tl-windows -no-interaction -no-gui -v -no-cls" ; \
 

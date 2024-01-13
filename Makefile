@@ -234,7 +234,7 @@ install_for_windows:
 	if [ ! -f /usr/local/bin/pdflatex ]; then \
 		echo "Installing texlive..." ; \
 		wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe ; \
-		install-tl-windows -no-interaction -no-gui -v -no-cls ; \
+		install-tl-windows.exe -no-interaction -no-gui -v -no-cls ; \
 	fi ; \
 	echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/local/bin/pandoc ]; then \

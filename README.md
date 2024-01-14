@@ -1,9 +1,9 @@
 markdown-easy
 ===========================
 
-[![CI ubuntu badge](https://github.com/rreece/markdown-easy/actions/workflows/ci-ubuntu.yml/badge.svg)](https://github.com/rreece/markdown-easy/actions)
-[![CI macos badge](https://github.com/rreece/markdown-easy/actions/workflows/ci-macos.yml/badge.svg)](https://github.com/rreece/markdown-easy/actions)
-[![CI windows badge](https://github.com/rreece/markdown-easy/actions/workflows/ci-windows.yml/badge.svg)](https://github.com/rreece/markdown-easy/actions)
+[![CI ubuntu badge](https://github.com/rreece/markdown-easy/actions/workflows/ci-ubuntu.yml/badge.svg)](https://github.com/rreece/markdown-easy/actions/workflows/ci-ubuntu.yml)
+[![CI macos badge](https://github.com/rreece/markdown-easy/actions/workflows/ci-macos.yml/badge.svg)](https://github.com/rreece/markdown-easy/actions/workflows/ci-macos.yml)
+[![CI windows badge](https://github.com/rreece/markdown-easy/actions/workflows/ci-windows.yml/badge.svg)](https://github.com/rreece/markdown-easy/actions/workflows/ci-windows.yml)
 
 Easy way to compile markdown into documents.
 

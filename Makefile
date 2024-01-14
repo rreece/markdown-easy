@@ -265,8 +265,3 @@ install_for_windows:
 	$(PRINT) "make $@ done."
 
 
-#		choco install texlive --params="/collections:latexrecommended,fontsrecommended,fontutils,plaingeneric /extraPackages:xpatch" ; \
-#		choco install texlive --params="/collections:latex" ; \
-#		wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe ; \
-#		cmd /u /c "install-tl-windows -no-interaction -no-gui -v -no-cls" ; \
-

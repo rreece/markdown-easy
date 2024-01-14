@@ -235,7 +235,7 @@ install_for_windows:
 	choco install wget ; \
 	if [ ! -f /c/texlive/2024/bin/windows/pdflatex.exe ]; then \
 		echo "Installing texlive..." ; \
-		choco install texlive --params="/collections:latexrecommended,plaingeneric" ; \
+		choco install texlive --params="/collections:latexrecommended,plaingeneric /extraPackages:xpatch" ; \
 	fi ;
 	@echo "which latex: `which latex`" ;
 	@echo "which pdftex: `which pdftex`" ;
@@ -265,7 +265,6 @@ install_for_windows:
 	$(PRINT) "make $@ done."
 
 
-#		choco install texlive --params="/collections:latexrecommended,plaingeneric /extraPackages:xpatch" ; \
 #		choco install texlive --params="/collections:latex" ; \
 #		wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe ; \
 #		cmd /u /c "install-tl-windows -no-interaction -no-gui -v -no-cls" ; \

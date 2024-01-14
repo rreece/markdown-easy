@@ -30,7 +30,7 @@ I'll write installation instructions another time. For now, you can see
 hints in how the GitHub runner does the installation in the CI:
 [`workflows/ci.yml`](https://github.com/rreece/markdown-easy/blob/main/.github/workflows/ci.yml)
 
-Starting a new documents:
+Starting a new document:
 
 *Note: This will delete the markdown files in this example.*
 

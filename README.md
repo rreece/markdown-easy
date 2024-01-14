@@ -28,7 +28,9 @@ Installation:
 
 I'll write installation instructions another time. For now, you can see
 hints in how the GitHub runner does the installation in the CI:
-[`workflows/ci.yml`](https://github.com/rreece/markdown-easy/blob/main/.github/workflows/ci.yml)
+[`workflows/ci-ubuntu.yml`](https://github.com/rreece/markdown-easy/blob/main/.github/workflows/ci-ubuntu.yml), 
+[`workflows/ci-macos.yml`](https://github.com/rreece/markdown-easy/blob/main/.github/workflows/ci-macos.yml), and 
+[`workflows/ci-windows.yml`](https://github.com/rreece/markdown-easy/blob/main/.github/workflows/ci-windows.yml).
 
 Starting a new document:
 

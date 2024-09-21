@@ -75,6 +75,8 @@ Other examples/blogs of writing with markdown:
 -   [github.com/simov/markdown-syntax](https://github.com/simov/markdown-syntax/blob/main/mermaid.md)
 -   [markdownguide.org](https://www.markdownguide.org/getting-started/) --- source: [github.com/mattcone/markdown-guide-book](https://github.com/mattcone/markdown-guide-book/blob/master/manuscript/chapter3.md)
 -   [github.com/gabyx/Technical-Markdown](https://github.com/gabyx/Technical-Markdown)
+-   [mdBook](https://rust-lang.github.io/mdBook/)
+-   [MkDocs](https://www.mkdocs.org/)
 
 
 Author

@@ -14,10 +14,12 @@
   \ifnum #2 > 0
   \setlength{\parskip}{#2\baselineskip}
   \fi
-  \list{}{\setlength{\leftmargin}{0pt}%
-          \setlength{\itemindent}{0pt}%
+  \list{}{\setlength{\leftmargin}{\cslhangindent}%
+          \setlength{\itemindent}{-\cslhangindent}%
           \setlength{\labelsep}{0pt}%
           \setlength{\labelwidth}{0pt}%
+          \setlength{\itemsep}{0pt}%
+          \setlength{\parsep}{0pt}%
           \renewcommand{\makelabel}[1]{}}%
  }%
  {\endlist}

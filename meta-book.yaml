@@ -67,6 +67,8 @@ classoption:
     -   'letterpaper'
     -   'openright'
     -   'twoside'
+extrapackages:
+    -   'soul'
 fancyhdr: true
 fontsize: '11pt'
 fontfamily: 'mathpazo'

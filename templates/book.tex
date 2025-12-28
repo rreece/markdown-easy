@@ -14,8 +14,13 @@
   \ifnum #2 > 0
   \setlength{\parskip}{#2\baselineskip}
   \fi
+  \list{}{\setlength{\leftmargin}{0pt}%
+          \setlength{\itemindent}{0pt}%
+          \setlength{\labelsep}{0pt}%
+          \setlength{\labelwidth}{0pt}%
+          \renewcommand{\makelabel}[1]{}}%
  }%
- {}
+ {\endlist}
 
 %% extra packages
 $for(extrapackages)$
@@ -264,6 +269,12 @@ $endif$
 %% tightlist hack
 \providecommand{\tightlist}{
       \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+%% pandocbounded - for pandoc 3.x compatibility
+\providecommand{\pandocbounded}[1]{#1}
+
+%% citeproctext - for pandoc 3.x citeproc compatibility
+\newcommand{\citeproctext}{}
 
 %% titlepage style
 \pretitle{\begin{center}\Huge\textbf }

@@ -158,6 +158,7 @@ newdoc: destroy destroygit
 ## install
 ## See: https://askubuntu.com/questions/1335772/using-pandoc-crossref-on-ubuntu-20-04
 ##      https://github.com/jgm/pandoc/releases/tag/3.6.2
+##      https://github.com/lierdakil/pandoc-crossref/releases/tag/v0.3.18.1
 ##-----------------------------------------------------------------------------
 
 install_for_ubuntu:
@@ -177,8 +178,8 @@ install_for_ubuntu:
 	pandoc --version ; \
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
 		echo "Installing pandoc-crossref..." ; \
-		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.18.1/pandoc-crossref-Linux.tar.xz ; \
-		tar -xf pandoc-crossref-Linux.tar.xz ; \
+		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.18.1/pandoc-crossref-Linux-X64.tar.xz ; \
+		tar -xf pandoc-crossref-Linux-X64.tar.xz ; \
 		sudo mv pandoc-crossref /usr/local/bin/ ; \
 		sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
 		sudo mkdir -p /usr/local/man/man1 ; \
@@ -216,8 +217,8 @@ install_for_mac:
 	pandoc --version ; \
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
 		echo "Installing pandoc-crossref..." ; \
-		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.18.1/pandoc-crossref-macOS.tar.xz ; \
-		tar -xf pandoc-crossref-macOS.tar.xz ; \
+		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.18.1/pandoc-crossref-macOS-X64.tar.xz ; \
+		tar -xf pandoc-crossref-macOS-X64.tar.xz ; \
 		sudo mv pandoc-crossref /usr/local/bin/ ; \
 		sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
 	fi ;
@@ -250,7 +251,7 @@ install_for_windows:
 	pandoc --version ; \
 	if [ ! -f /c/texlive/2024/bin/windows/pandoc-crossref.exe ]; then \
 		echo "Installing pandoc-crossref..." ; \
-		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.18.1/pandoc-crossref-Windows.7z ; \
+		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.18.1/pandoc-crossref-Windows-X64.7z ; \
 		7z x pandoc-crossref-Windows.7z ; \
 		ls ; \
 		mv pandoc-crossref.exe /c/texlive/2024/bin/windows/ ; \

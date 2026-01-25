@@ -157,6 +157,7 @@ newdoc: destroy destroygit
 ##-----------------------------------------------------------------------------
 ## install
 ## See: https://askubuntu.com/questions/1335772/using-pandoc-crossref-on-ubuntu-20-04
+##      https://github.com/jgm/pandoc/releases/tag/3.6.2
 ##-----------------------------------------------------------------------------
 
 install_for_ubuntu:
@@ -169,8 +170,8 @@ install_for_ubuntu:
 	@echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/bin/pandoc ]; then \
 		echo "Installing pandoc..." ; \
-		wget https://github.com/jgm/pandoc/releases/download/3.6/pandoc-3.6-2-amd64.deb ; \
-		sudo dpkg -i pandoc-3.6-2-amd64.deb ; \
+		wget https://github.com/jgm/pandoc/releases/download/3.6.2/pandoc-3.6.2-1-amd64.deb ; \
+		sudo dpkg -i pandoc-3.6.2-1-amd64.deb ; \
 	fi ;
 	@echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \
@@ -208,7 +209,7 @@ install_for_mac:
 	@echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/local/bin/pandoc ]; then \
 		echo "Installing pandoc..." ; \
-		wget https://github.com/jgm/pandoc/releases/download/3.6/pandoc-3.6.2-macOS.pkg ; \
+		wget https://github.com/jgm/pandoc/releases/download/3.6.2/pandoc-3.6.2-arm64-macOS.pkg ; \
 		sudo installer -pkg pandoc-3.6.2-macOS.pkg -target / ; \
 	fi ;
 	@echo "which pandoc: `which pandoc`" ; \
@@ -240,7 +241,7 @@ install_for_windows:
 	@echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /c/texlive/2024/bin/windows/pandoc.exe ]; then \
 		echo "Installing pandoc..." ; \
-		wget https://github.com/jgm/pandoc/releases/download/3.6/pandoc-3.6.2-windows-x86_64.zip ; \
+		wget https://github.com/jgm/pandoc/releases/download/3.6.2/pandoc-3.6.2-windows-x86_64.zip ; \
 		unzip pandoc-3.6.2-windows-x86_64.zip ; \
 		ls ; \
 		mv pandoc-3.6.2/pandoc.exe /c/texlive/2024/bin/windows/ ; \

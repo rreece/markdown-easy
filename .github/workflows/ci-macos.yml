@@ -28,6 +28,3 @@ jobs:
     - name: Run make pdf
       run: make pdf
 
-    - name: Inspect latex.log
-      run: type latex.log
-

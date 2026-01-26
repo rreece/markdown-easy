@@ -211,7 +211,7 @@ install_for_mac:
 	if [ ! -f /usr/local/bin/pandoc ]; then \
 		echo "Installing pandoc..." ; \
 		wget https://github.com/jgm/pandoc/releases/download/3.6.2/pandoc-3.6.2-arm64-macOS.pkg ; \
-		sudo installer -pkg pandoc-3.6.2-macOS.pkg -target / ; \
+		sudo installer -pkg pandoc-3.6.2-arm64-macOS.pkg -target / ; \
 	fi ;
 	@echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \
@@ -252,7 +252,7 @@ install_for_windows:
 	if [ ! -f /c/texlive/2026/bin/windows/pandoc-crossref.exe ]; then \
 		echo "Installing pandoc-crossref..." ; \
 		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.18.1/pandoc-crossref-Windows-X64.7z ; \
-		7z x pandoc-crossref-Windows.7z ; \
+		7z x pandoc-crossref-Windows-X64.7z ; \
 		ls ; \
 		mv pandoc-crossref.exe /c/texlive/2026/bin/windows/ ; \
 	fi ;

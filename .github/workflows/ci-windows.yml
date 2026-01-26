@@ -32,5 +32,6 @@ jobs:
       run: make pdf
 
     - name: Inspect latex.log
+      if: always()
       run: type latex.log
 

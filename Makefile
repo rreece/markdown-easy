@@ -235,7 +235,7 @@ install_for_windows:
 	choco install wget ; \
 	if [ ! -f /c/texlive/2026/bin/windows/pdflatex.exe ]; then \
 		echo "Installing texlive..." ; \
-		choco install texlive --params="/collections:latexextra,latexrecommended,fontsrecommended,plaingeneric /extraPackages:xpatch,abstract" \
+		choco install texlive --params="/collections:latexextra,latexrecommended,fontsrecommended,plaingeneric /extraPackages:xpatch,abstract" ; \
 	fi ;
 	@echo "which latex: `which latex`" ;
 	@echo "which pdftex: `which pdftex`" ;

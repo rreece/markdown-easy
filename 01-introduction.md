@@ -62,4 +62,3 @@ set in `meta.yaml`, instead of the css file used in the
     css: 'templates/markdown-memo.css'
 
 
-

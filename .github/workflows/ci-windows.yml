@@ -20,7 +20,7 @@ jobs:
         python-version: "3.13.5"
 
     - name: Update PATH
-      run: Add-Content $env:GITHUB_PATH "C:\\texlive\\2024\\bin\\windows"
+      run: Add-Content $env:GITHUB_PATH "C:\\texlive\\2026\\bin\\windows"
 
     - name: Run make install_for_windows
       run: make install_for_windows
@@ -30,4 +30,8 @@ jobs:
 
     - name: Run make pdf
       run: make pdf
+
+    - name: Inspect latex.log
+      if: always()
+      run: type latex.log
 

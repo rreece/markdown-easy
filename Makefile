@@ -157,6 +157,8 @@ newdoc: destroy destroygit
 ##-----------------------------------------------------------------------------
 ## install
 ## See: https://askubuntu.com/questions/1335772/using-pandoc-crossref-on-ubuntu-20-04
+##      https://github.com/jgm/pandoc/releases/tag/3.6.2
+##      https://github.com/lierdakil/pandoc-crossref/releases/tag/v0.3.18.1
 ##-----------------------------------------------------------------------------
 
 install_for_ubuntu:
@@ -169,15 +171,15 @@ install_for_ubuntu:
 	@echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/bin/pandoc ]; then \
 		echo "Installing pandoc..." ; \
-		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-1-amd64.deb ; \
-		sudo dpkg -i pandoc-2.13-1-amd64.deb ; \
+		wget https://github.com/jgm/pandoc/releases/download/3.6.2/pandoc-3.6.2-1-amd64.deb ; \
+		sudo dpkg -i pandoc-3.6.2-1-amd64.deb ; \
 	fi ;
 	@echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
 		echo "Installing pandoc-crossref..." ; \
-		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.10.0a/pandoc-crossref-Linux.tar.xz ; \
-		tar -xf pandoc-crossref-Linux.tar.xz ; \
+		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.18.1/pandoc-crossref-Linux-X64.tar.xz ; \
+		tar -xf pandoc-crossref-Linux-X64.tar.xz ; \
 		sudo mv pandoc-crossref /usr/local/bin/ ; \
 		sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
 		sudo mkdir -p /usr/local/man/man1 ; \
@@ -208,15 +210,15 @@ install_for_mac:
 	@echo "which pdflatex: `which pdflatex`" ; \
 	if [ ! -f /usr/local/bin/pandoc ]; then \
 		echo "Installing pandoc..." ; \
-		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-macOS.pkg ; \
-		sudo installer -pkg pandoc-2.13-macOS.pkg -target / ; \
+		wget https://github.com/jgm/pandoc/releases/download/3.6.2/pandoc-3.6.2-arm64-macOS.pkg ; \
+		sudo installer -pkg pandoc-3.6.2-arm64-macOS.pkg -target / ; \
 	fi ;
 	@echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \
 	if [ ! -f /usr/local/bin/pandoc-crossref ]; then \
 		echo "Installing pandoc-crossref..." ; \
-		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.10.0a/pandoc-crossref-macOS.tar.xz ; \
-		tar -xf pandoc-crossref-macOS.tar.xz ; \
+		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.18.1/pandoc-crossref-macOS-X64.tar.xz ; \
+		tar -xf pandoc-crossref-macOS-X64.tar.xz ; \
 		sudo mv pandoc-crossref /usr/local/bin/ ; \
 		sudo chmod a+x /usr/local/bin/pandoc-crossref ; \
 	fi ;
@@ -231,28 +233,28 @@ install_for_mac:
 install_for_windows:
 	@echo "Installing for windows..." ; \
 	choco install wget ; \
-	if [ ! -f /c/texlive/2024/bin/windows/pdflatex.exe ]; then \
+	if [ ! -f /c/texlive/2026/bin/windows/pdflatex.exe ]; then \
 		echo "Installing texlive..." ; \
-		choco install texlive --params="/collections:latexrecommended,fontsrecommended,plaingeneric /extraPackages:xpatch" ; \
+		choco install texlive --params="/collections:latex,latexrecommended,fontsrecommended /extraPackages:xpatch,abstract,titlesec,fancyhdr,soul,ulem,tocloft,mathpazo" ; \
 	fi ;
 	@echo "which latex: `which latex`" ;
 	@echo "which pdftex: `which pdftex`" ;
 	@echo "which pdflatex: `which pdflatex`" ; \
-	if [ ! -f /c/texlive/2024/bin/windows/pandoc.exe ]; then \
+	if [ ! -f /c/texlive/2026/bin/windows/pandoc.exe ]; then \
 		echo "Installing pandoc..." ; \
-		wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-windows-x86_64.zip ; \
-		unzip pandoc-2.13-windows-x86_64.zip ; \
+		wget https://github.com/jgm/pandoc/releases/download/3.6.2/pandoc-3.6.2-windows-x86_64.zip ; \
+		unzip pandoc-3.6.2-windows-x86_64.zip ; \
 		ls ; \
-		mv pandoc-2.13/pandoc.exe /c/texlive/2024/bin/windows/ ; \
+		mv pandoc-3.6.2/pandoc.exe /c/texlive/2026/bin/windows/ ; \
 	fi ;
 	@echo "which pandoc: `which pandoc`" ; \
 	pandoc --version ; \
-	if [ ! -f /c/texlive/2024/bin/windows/pandoc-crossref.exe ]; then \
+	if [ ! -f /c/texlive/2026/bin/windows/pandoc-crossref.exe ]; then \
 		echo "Installing pandoc-crossref..." ; \
-		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.10.0a/pandoc-crossref-Windows.7z ; \
-		7z x pandoc-crossref-Windows.7z ; \
+		wget -c https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.18.1/pandoc-crossref-Windows-X64.7z ; \
+		7z x pandoc-crossref-Windows-X64.7z ; \
 		ls ; \
-		mv pandoc-crossref.exe /c/texlive/2024/bin/windows/ ; \
+		mv pandoc-crossref.exe /c/texlive/2026/bin/windows/ ; \
 	fi ;
 	@echo "which pandoc-crossref: `which pandoc-crossref`" ; \
 	if [ ! -f requirements.txt ]; then \
